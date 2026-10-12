@@ -1,0 +1,240 @@
+{
+ "seed0": 2670149359,
+ "rlog": [
+  [
+   -18352,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   2817,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   19310,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -12991,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -22101,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -16503,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -26335,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   20548,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -18057,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   15239,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   13404,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -13293,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   2822,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -30429,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   20414,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   31963,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   18054,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -26157,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   11612,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -23786,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -17244,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -30582,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   14789,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   6812,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -22030,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   31404,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   16581,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   29310,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   -504,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   5063,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   527
+  ],
+  [
+   32746,
+   "Game.random (engine/game.js:29:30) < rnd16 (engine/ai.js:31:29) < ignore (engine/ai.js:143:26)",
+   528
+  ],
+  [
+   22929,
+   "Game.random (engine/game.js:29:30) < rnd16 (engine/ai.js:31:29) < ignore (engine/ai.js:143:26)",
+   529
+  ],
+  [
+   -13717,
+   "Game.random (engine/game.js:29:30) < rnd16 (engine/ai.js:31:29) < ignore (engine/ai.js:143:26)",
+   530
+  ],
+  [
+   12290,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   6856,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   -3125,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   15663,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   22866,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   13566,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   27727,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   -13475,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   11120,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   -18954,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   -10168,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   -4332,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   -25972,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ],
+  [
+   31342,
+   "Game.random (engine/game.js:29:30) < http://localhost:8766/src/engine/events.js:224:57 < selectStory (engine/events.js:23:19)",
+   531
+  ]
+ ]
+}

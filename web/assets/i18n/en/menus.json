@@ -1,0 +1,99 @@
+[
+ {
+  "title": "About",
+  "items": [
+   {
+    "text": "About Trust and Betrayal...",
+    "key": null
+   }
+  ]
+ },
+ {
+  "title": "Game",
+  "items": [
+   {
+    "text": "Load Game",
+    "key": null
+   },
+   {
+    "text": "Save Game",
+    "key": null
+   },
+   {
+    "text": "Quit Game",
+    "key": null
+   }
+  ]
+ },
+ {
+  "title": "Options",
+  "items": [
+   {
+    "text": "Narration Off",
+    "key": null
+   },
+   {
+    "text": "Long Delays",
+    "key": null
+   },
+   {
+    "text": "Short Delays",
+    "key": null
+   },
+   {
+    "text": "No Delays",
+    "key": null
+   }
+  ]
+ },
+ {
+  "title": "Characters",
+  "items": [
+   {
+    "text": "All Characters",
+    "key": "A"
+   },
+   {
+    "text": "Vetvel",
+    "key": "V"
+   },
+   {
+    "text": "Kendra",
+    "key": "K"
+   },
+   {
+    "text": "Gardbore",
+    "key": "G"
+   },
+   {
+    "text": "Wiki",
+    "key": "W"
+   },
+   {
+    "text": "Locksher",
+    "key": "L"
+   },
+   {
+    "text": "Zubi",
+    "key": "Z"
+   },
+   {
+    "text": "Skordokott",
+    "key": "S"
+   },
+   {
+    "text": "Chris",
+    "key": "C"
+   }
+  ]
+ },
+ {
+  "title": "Recall Today",
+  "items": [
+   {
+    "text": "Recall Today",
+    "key": "R"
+   }
+  ]
+ }
+]

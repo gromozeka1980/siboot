@@ -1,0 +1,75 @@
+#301
+This is a narration window; it tells what is happening. You can turn it off from the OPTIONS Menu.
+You are &. You are alone in your house.  You can go somewhere or kill time.
+You ask & if anybody has betrayed you.
+% says hello.
+You enter %'s house; & is here.
+You propose a deal to &.
+& accepts the deal!  That's very good!
+& proposes a deal to you.
+The sun sets and you must prepare for the night.
+& comes to attack you!  You must choose a defense.
+& rejects your offer.
+& enters.
+& is waiting here for you; the two of you enter together.
+You return to your home.
+You furiously demand that & reconsider.
+& begs you to reconsider.
+& furiously demands that you reconsider.
+& accuses you of betrayal.
+You accuse & of betrayal.
+& apologizes to you.
+You apologize to &.
+& yells at you.
+You yell at &.
+& asks you if anybody has betrayed #.
+You greet &.
+& leaves; you are now able to enter.
+& returns home; the two of you enter together.
+.
+You say goodbye to &.
+& says goodbye to you.
+& says goodbye.
+null
+You beg & to reconsider.
+You arrive at &'s house but the door is locked.
+& bores you with random ruminations on irrelevant topics.
+& flatters you.
+& expresses trust in you.
+& expresses fear of you.
+& expresses love for you.
+& is not afraid of you.
+& does not trust you.
+& does not like you.
+& forgives you.
+& is angry and yells at you.
+.
+& thanks you.
+& is sorry and apologizes to you.
+& laughs at you and calls you a sucker.
+& gives you some information.
+& answers your question.
+& promises not to betray you today.
+& promises not to attack you tonight.
+& accuses you of breaking a promise not to attack.
+& accuses you of breaking a promise not to betray.
+You accuse & of breaking a promise not to attack.
+You accuse & of breaking a promise not to betray.
+You dazzle & with your wit and erudition.
+You butter up &.
+You express trust in &.
+You express fear of &.
+You express love for &.
+You are not afraid of &.
+You express distrust for &.
+You express dislike for &.
+You forgive &.
+You yell at &.
+.
+You thank &.
+You apologize to &.
+You call & a sucker.
+You promise not to betray & today.
+You promise not to attack & tonight.
+                                                                                                 
+

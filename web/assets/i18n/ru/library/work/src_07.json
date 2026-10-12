@@ -1,0 +1,569 @@
+{
+ "items": [
+  {
+   "id": "book.manual",
+   "title": "Trust & Betrayal — Rules",
+   "note": "Rules of the game, from the source-code archive released by the author."
+  },
+  {
+   "id": "sec.0",
+   "title": "Game Instructions — Hard Disk Installation",
+   "blocks": [
+    {
+     "p": "The Siboot game disk is not copy-protected.  You may put the game onto your hard disk for your own use, but if you do so, you must preserve the folder structure used on the original disk.  All of the files/folders on the original disk must be in the same outer folder on your hard disk.  The easiest way to do this is to create a new folder on your hard disk called ‘SibootFolder’ and then copy everything on the original disk (except the System Folder) into the SibootFolder."
+    },
+    {
+     "p": "We have tested the game under these circumstances and confirmed that it is well-behaved.  But if you deviate from the simple procedure cited above, the program may fail and damage the data on your hard disk.  Do not delete any of the files on the original disk.  Do not edit or otherwise modify any of them.  Do not change the names of any of the files or folders."
+    }
+   ]
+  },
+  {
+   "id": "sec.1",
+   "title": "Situation",
+   "blocks": [
+    {
+     "p": "You are Vetvel, one of seven acolytes on Kira, a moon of the planet Lamina.  Lamina is populated by seven intelligent species, who have spent most of their histories in strife.  The tiny colony on Kira was founded as a political experiment to demonstrate the ability of suitably inclined Laminans of different species to live in harmony.  The experiment came too late; Lamina fought a limited nuclear war, shattering its civilization and leaving the colonists on Kira stranded.  Under the leadership of a remarkable person named Siboot, the Kirans founded a new civilization based on the development of telepathic powers and a universal telepathic language called eeyal.  From their position on Kira, they beamed radio messages to the home planet, proselytizing their philosophy/religion.  Under this influence, Lamina successfully re-civilized itself, coming to accept Kira as the spiritual center of their civilization and the leader of Kira, called the Shepherd, as their spiritual leader."
+    },
+    {
+     "p": "One hundred and thirty five years have passed since the nuclear war; there have been four Shepherds.  Now Feslym, the fourth Shepherd, has died, and the time has come to replace him.  The Shepherdship will be awarded to the first acolyte who garners eight auras of each of the three types: tanaga, katsin, and shial.  Auras are a mental property associated with telepathy, and they confer upon their owner greater telepathic powers.  Each acolyte has, by dint of much training, built up a goodly set of auras.  But now the acolytes will engage in mental combat to acquire the remaining auras each needs to attain the perfect 8-8-8 set and become Shepherd."
+    }
+   ]
+  },
+  {
+   "id": "sec.2",
+   "title": "Mental combat",
+   "blocks": [
+    {
+     "p": "Mental combat is fought at night, while you sleep.  Your spirit travels into the Land of the Auras, there encountering the spirits of other acolytes.  During an encounter, you wrap yourself in one of your auras, as does your opponent.  A tanaga aura will defeat a katsin aura, a katsin aura will defeat a shial aura, and a shial aura will defeat a tanaga aura.  Two auras of the same type stand off without a victor.  The victor in mental combat gets to keep the aura of the loser."
+    },
+    {
+     "p": "Players will normally try to play those auras that will win them the auras of which they have the greatest shortage.  The trick to mental combat, then, is to learn how many auras your potential opponents have; if you have this information, you can readily anticipate what aura they will use in combat and counter it with the proper aura.  Discovering what auras people have is the outermost challenge of the game."
+    }
+   ]
+  },
+  {
+   "id": "sec.3",
+   "title": "Deals",
+   "blocks": [
+    {
+     "p": "You spend most of your time during the day scurrying about trying to gather the information you need.  Each morning, you awaken with a single item of information about each of the other acolytes.  An item of information is called an ‘aura-count’; it is the number of auras of a single type (tanaga, katsin, or shial) that an acolyte possesses.  Each morning, you know one aura-count for each acolyte.  You need to know all three to reliably predict their behavior."
+    },
+    {
+     "p": "Other acolytes know the other aura-counts.  You can make deals with them, revealing your information about a person in return for their revealing their information.  Getting them to accept your deals is a large part of the challenge of the game.  Revealing somebody’s aura-count to another person is considered to be an act of betrayal; should the victim of the betrayal discover the act, he will be angry with his betrayer.  Thus, you must be careful not to betray your friends.  More important, you must carefully choose the people with whom you make deals.  An untrustworthy person might just run to your victim and tell the victim what you have done, damaging your relationship with that person and enhancing his own.  There is also the simple issue of friendship Ñ sometimes you will make a deal with a friend whom you do not fully trust, but whose goodwill you want to retain."
+    }
+   ]
+  },
+  {
+   "id": "sec.4",
+   "title": "Betraying deals",
+   "blocks": [
+    {
+     "p": "Another form of betrayal is telling people about the betrayal that a third person has committed.  This occurs when Person A tells Person B that a Person C betrayed Person D.  This form of betrayal is considered to be just as bad as the deal-betrayal."
+    }
+   ]
+  },
+  {
+   "id": "sec.5",
+   "title": "Dialogues",
+   "blocks": [
+    {
+     "p": "The central problems you have, then, involve your relationship with the other characters.  Whom can you trust?  How do you get them to trust you?  If you betray somebody often, word is bound to get back to him and he will lose his trust in you.  But there are other ways to develop your relationship with people: your conversations with them.  Whenever you encounter another character, you can carry on a dialogue with that person.  Some of that dialogue is very businesslike in style: making deals, asking questions, and so on.  But there is also an emotional component to the dialogues that can be very important.  You can express your feelings towards the person.  These things can influence the tone of the dialogue and make your friend more inclined to trust, like, or fear you."
+    }
+   ]
+  },
+  {
+   "id": "sec.6",
+   "title": "Promises",
+   "blocks": [
+    {
+     "p": "You can try to win a character’s trust or friendship by making promises.  There are two types of promises: ‘promise no attack’ and ‘promise no betray’.  If you make the first promise to a person, you are guaranteeing that you will not attack that person during the upcoming night.  Note that the promise expires at dawn; you could still attack the person on any following night.  This is still of value to both of you; it earns some friendship and it also encourages the other person not to bother garnering information about you (the need for it is lessened).  If you renege on a promise, the person will be angry with you and will trust you less."
+    },
+    {
+     "p": "The other form of promise is more complicated.  If you promise somebody that you won’t betray them, you are guaranteeing that you have not and will not betray them during the day on which you made the promise.  The good news, then, is that the promise expires at dawn the next day; you can betray them afterwards without violating your promise.  The bad news is that the promise is retroactive: you must not have betrayed the person at any time during the same day that you make the promise, regardless of whether it was sooner or later.  Such a promise will increase a person’s trust in you, but if you violate the promise, they will lose more trust in you."
+    }
+   ]
+  },
+  {
+   "id": "sec.7",
+   "title": "Eeyal",
+   "blocks": [
+    {
+     "p": "The dialogues, and indeed the entire play of the game, is carried out in eeyal, the telepathic language of Kira.  A single word of eeyal is represented by an icon; if you want to know what any icon means, just click down on that icon and a quick-and-dirty translation will appear.  The screen is divided into five parts:"
+    },
+    {
+     "p": "The box on the far left contains the icon-words that are available for you to say.  Think of it as a graphical menu.  The top middle box contains various control boxes that let you edit the sentences you build.  It also contains status information such as the date and time, where you are, and whom you are with.  The lower middle box shows your relationship with that person.  The top right box shows the sentence you have entered so far, and the bottom right box shows the sentence that somebody is saying back to you."
+    },
+    {
+     "p": "You choose an icon-word from the box on the left by moving the mouse to it, clicking, and releasing.  If you just want to know what one of these icons means, click and hold over the icon; it will translate.  If you don’t want to choose that icon, slide the mouse away from the icon before releasing the mouse button.  When you have selected a word, it will be added to the sentence that you are building in the upper right box.  The computer always fills in the first word of the sentence for you (Vetvel), because it is the subject of the sentence and YOU are Vetvel.  Now suppose, for example, that I selected the first icon in the left box, which means ‘go to’.  Then the screen would look like this:"
+    },
+    {
+     "p": "Note how the verb ‘go to’ has been placed after the subject.  Note also that there is now a new set of icons in the box on the left.  These icons are the possible places to which I could go.  To declare where I am going, I select one of these icons.  Finally, note that the little box labelled ‘Back Space’ is now activated.  This means that I can backspace an icon, just like the Backspace key on a keyboard, only it will cause me to backspace an entire icon.  Suppose that I select the third icon.  Then I’ll get a screen looking like this:"
+    },
+    {
+     "p": "This box on the right shows the completed sentence: Vetvel go to Wiki house.  It also adds two new commands into the little box in the upper center.  One of these, ‘Do It’, will cause that sentence to execute.  The other, ‘Cancel’, is a big version of Backspace; it erases the entire sentence and allows me to start all over."
+    },
+    {
+     "p": "Eeyal is a language unlike any you have ever used.  While it is in many ways very primitive, it has a special characteristic unknown in regular languages: since you speak directly from your mind, you cannot lie or otherwise mis-speak yourself in eeyal.  It won’t let you.  The only words you can ever speak are words that make sense, and are true and proper.  For example, you cannot offer somebody a deal in which you would be giving them information they already know; they wouldn’t gain anything from such a deal, so there’s no point in even offering it.  In effect, eeyal takes care of the rules of the game for you.  If you can say it, it’s fair to say; if you can’t say it, there’s a good reason why you can’t."
+    },
+    {
+     "p": "To help explain eeyal, there is a little narration box that pops up every time you do something; it explains what is happening in plain English.  After a while, you will tire of this narration; you can turn it off from the OPTIONS menu."
+    }
+   ]
+  },
+  {
+   "id": "sec.8",
+   "title": "Dialogue Information",
+   "blocks": [
+    {
+     "p": "When you enter into a dialogue with a person, the screen changes to show more information about that person:"
+    },
+    {
+     "p": "The bar graphs are meant to indicate your relationship with that person (how he or she feels about you) in terms of his fear, trust, and love for you.  The face indicates the general emotional tone of the last comment made by your partner.  If you have uncertainties about any of these terms, just click on the graphic in question and it will explain itself."
+    }
+   ]
+  },
+  {
+   "id": "sec.9",
+   "title": "Game Menu",
+   "blocks": [
+    {
+     "p": "This menu has three items: Quit Game, Load Game, and Save Game.  Quit Game will terminate play without saving it; you are given an alert box to warn you and give you one chance to abort this precipitous decision.  Load Game is almost as dangerous: it will load an old game over the current one, destroying the current game-in-progress.  Save Game will save the current game, allowing you to quit and later return to the game."
+    }
+   ]
+  },
+  {
+   "id": "sec.10",
+   "title": "Options Menu",
+   "blocks": [
+    {
+     "p": "The Options menu allows you set several minor parameters.  The first is the playing of the sound during combat.  You can turn it on or off.  The second is the appearance of narration; you can turn it on or off.  The third option uses three menu items and sets the speed of some of the displays.  The Long Delay option sets a long delay for some displays; the Short Delay option has a shorter display delay; and the No Delay insures that there are no unnecessary delays."
+    }
+   ]
+  },
+  {
+   "id": "sec.11",
+   "title": "Character Menu",
+   "blocks": [
+    {
+     "p": "The first item on the Characters menu displays your current knowledge of the other characters in the game; you will consult this frequently before entering combat.  When you select this item, you will see a screen that looks like this:"
+    },
+    {
+     "p": "This screen tells you that Vetvel is waiting outside Gardbore’s house, has seven tanagas, eight katsins, and seven shials.  Most of the other characters are going to other places, but Locksher is home.  The question marks indicate an unknown quantity of aura."
+    },
+    {
+     "p": "The other items on this menu present information on each of the characters.  They show the picture of the character and give a personality sketch of the character.  It also gives a quick rundown on how the characters feel about each other; this information changes during the course of the game, but this display’s information is always current."
+    }
+   ]
+  },
+  {
+   "id": "sec.12",
+   "title": "RECALL TODAY menu",
+   "blocks": [
+    {
+     "p": "This menu has but a single item that will give you a quick summary of promises and betrayals made today.  Consult it to find out what promises you have made, so that you don’t forget and break a promise.  It will also remind you about any betrayals you have made, or have been made against you."
+    }
+   ]
+  },
+  {
+   "id": "sec.13",
+   "title": "OPTIONS screen",
+   "blocks": [
+    {
+     "p": "The OPTIONS display appears at the beginning of the game and allows you to declare what kind of game you will play.  There are two choices for you to make: how difficult the game will be and how long to play.  The OPTIONS screen looks like this:"
+    },
+    {
+     "p": "If you choose the Easy difficulty level, then everybody will think that you’re wonderful and the game will go swimmingly.  The characters will behave in a more exaggerated fashion;  they will react to good things with great joy and bad things with fury.  Their behavior in combat is simple and easy to predict if you know their aura-counts."
+    },
+    {
+     "p": "In the Medium difficulty level, things are much like the Beginner level, only not so exaggerated.  The characters will still like you and trust you and fear you, but not so much as in the Beginner level.  They will plan their combat moves in the same manner.  Their reactions to your behavior will be less exaggerated than in the Beginner level."
+    },
+    {
+     "p": "In the Hard difficulty level, they will treat you like normal Ñ there is no emotional boost in your favor.  Their reactions to your behavior will be more subtle than in the other levels.  The biggest change is in their behavior in combat.  The other characters will take into consideration what they know about your aura counts in choosing an aura for combat.  Thus, in the Easy and Medium difficulty levels, you need only consider the aura counts of your opponents, knowing with confidence what they will do in most cases, but in the Hard difficulty level you must guess their behavior based on what they might know about you."
+    },
+    {
+     "p": "The Length of Game choice determines how many auras you start the game with.  For a short game, you and the other characters will all start just a few auras shy of the 8-8-8 combination needed to win.  It won’t take much time for somebody to win.  In the long game, you start with very few auras and will need to go for a long time to win."
+    }
+   ]
+  },
+  {
+   "id": "sec.14",
+   "title": "Random Events",
+   "blocks": [
+    {
+     "p": "These are strange occurrences that pop up during the course of the game.  The computer will tell you a story and present you with four options in the lower portion of the screen.  Select the appropriate option by clicking on it with the mouse, and click on the box marked ‘Done’ when you are satisfied with your decision.  If the story is long, it may occupy several screens; in this case, you can use the ‘Next Page’ and ‘Previous Page’ boxes to step through the story."
+    }
+   ]
+  },
+  {
+   "id": "sec.15",
+   "title": "A Typical Day",
+   "blocks": [
+    {
+     "p": "You will normally start the day by visiting one of your friends.  Skordokott and Wiki are good candidates, or perhaps Kendra.  Let’s say that you visit Skordokott.  After a few pleasantries, you can plunge right into dealmaking, because Skordokott is a friend of yours.  It’s best to offer him a deal betraying somebody he doesn’t like; Zubi is often a good choice here.  If at first he doesn’t respond to your offer, perhaps an appeal to his friendship (by begging) will help.  Once you’ve broken the ice with your first deal, you’ll find him more amenable to dealmaking.  It might also help to promise him that you won’t attack or betray him.  After all, Skordokott is your best friend, and you would never attack or betray him anyway, so why not make the promise?  It can only cement the bond between you.  You can trust Skordokott to keep your deals secret, so make almost any deal you can with him."
+    },
+    {
+     "p": "After a while you will have made all the deals possible with Skordokott, so you say goodbye and head for another house.  Perhaps Wiki would be a good choice, or maybe Kendra.  These people are moderately friendly, but you will have to be more careful with them.  You must break the ice more carefully, perhaps trading information on other betrayals, but don’t betray Skordokott!"
+    },
+    {
+     "p": "After you have talked with all three of these people, you will probably have a good set of information about other people’s auras.  You might have enough to call it a day and just head home.  Perhaps you need more.  If so, head for one of the three characters you have not yet spoken with.  None of them are very sympathetic to you, but if you are careful, persuasive, intimidating, or otherwise right on the mark you MIGHT be able to swing a deal or two.  It may take some extended discussion to warm them up, though."
+    },
+    {
+     "p": "Eventually you head home.  Now you just wait for nightfall with the WAIT word.  Perhaps somebody will come to visit you.  Remember that it’s not nice for a host to kick out a guest.  Humor your guest and try to make the dialogue as productive as possible.  Eventually he or she will leave."
+    },
+    {
+     "p": "Now night is falling and it is time to plan your all-important attack.  Consult the All Characters display and see who has what.  Decide what you are most in need of and then find somebody who has an excess of that aura, and will likely use it in combat.  It may be that the best person to attack is a friend of yours.  If so, you must then make a difficult decision:  do you attack a friend, or accept a less-desirable attack on somebody else?"
+    },
+    {
+     "p": "You must also be prepared for somebody to attack you.  This will happen after your own attack.  If somebody does come to attack you, you will be shown what their aura-counts are, and you will have to guess the best defense against them."
+    }
+   ]
+  },
+  {
+   "id": "sec.16",
+   "title": "How to Win",
+   "blocks": [
+    {
+     "p": "The first skill you must learn is predicting another person’s behavior in combat.  This is not too difficult.  In general, you always want to try to win an aura that you have the greatest shortage of, and you want to fight with (and therefore risk losing) an aura that you have a large quantity of.  Other people will do the same.  For example, here is an extremely simple situation:  suppose that you have 6 tanagas, 8 katsins, and 1 shial, while Kendra has 1 tanaga, 6 katsins, and 8 shials.  You want to win a shial, so you will want to play one of your katsins, which is perfect, because you are highest in katsin anyway.  Kendra is lowest in tanaga, so she will want to win a tanaga, so she will want to play one of her shials.  Thus, her best move plays right into the hands of your best move.  That’s the kind of situation that’s easy to figure out.  The worst situation arises when Kendra has, say, seven of each aura; then you have no way of knowing what she’ll do."
+    },
+    {
+     "p": "Here’s a tougher example:  You have 6 tanagas, 7 katsins, and 8 shials.  Kendra has 6 tanagas, 7 katsins, and 6 shials.  What do you play against Kendra?  You’d like to play your shial in the hope of winning a tanaga.  But in this case that would be unwise.  Kendra will play her katsin to win a shial, because she is strongest in katsin.  If you play your shial against her katsin, you will lose.  Your best bet is to play your tanaga, even though that is what you are weakest in.  Why?  Because you knowÊ that Kendra will use her katsin.  Even if it were an expert level game, Kendra would play her katsin because she would think that you would do the obvious thing and use your shial."
+    },
+    {
+     "p": "It is important to remember that there are two levels of indirection here: first, you must figure what your opponent will attack with, then you must figure what you need to use to beat that.  Thus, you must step back two steps from the aura that your opponent is weakest in.  For example, if your opponent is weakest in katsin, then he will probably use tanaga, and so you must use shial."
+    },
+    {
+     "p": "Remember that the ‘Hard’ difficulty level game allows the other characters to anticipate your combat decisions based on what they know about your aura-counts.  If you are smart enough to plan your move based on what you know about other characters, they too can be smart enough to do the same.  The problem is, you don’t know how much they know.  The best way to deal with this is to try to prevent them from finding out your aura-counts.  If you are well-liked and feared, you are safer."
+    },
+    {
+     "p": "The game is won or lost in dialogues.  You must comport yourself carefully in these, using tact, bluster, friendliness, or whatever is appropriate to the situation."
+    },
+    {
+     "p": "The only solid advantage you can get in the game comes from learning as much as possible about the other characters.  This in turn hinges on your ability to cope with them as people.  This is where the game becomes an un-strategy game.  The characters in this game have distinct personalities.  You can’t outthink them.  You can appeal to their sympathies, or try to intimidate them, or treat them with great respect or disdain.  Different characters respond differently.  You must rely not only on your analytic skills but also on your intuition and your social skills."
+    }
+   ]
+  },
+  {
+   "id": "sec.17",
+   "title": "A Dictionary of Eeyal",
+   "blocks": [
+    {
+     "dict": [
+      [
+       "Vetvel",
+       "A Jomkar.  That’s you!"
+      ],
+      [
+       "Kendra",
+       "A Klast female"
+      ],
+      [
+       "Gardbore",
+       "A Frem male"
+      ],
+      [
+       "Wiki",
+       "A Ripi male"
+      ],
+      [
+       "Locksher",
+       "A Lokweel male."
+      ],
+      [
+       "Zubi",
+       "A Srol female."
+      ],
+      [
+       "Skordokott",
+       "A Tayran male."
+      ],
+      [
+       "nobody",
+       "Used in answering the question, ‘Has anybody betrayed me?’  Use of this word does not mean that betrayal has not happened, only that the speaker is unaware of any betrayals of the type requested."
+      ],
+      [
+       "who",
+       "Used in asking the question, ‘Has anybody betrayed me?’ [The actual form is, ‘I ask you that who has betrayed me.’]"
+      ],
+      [
+       "greet",
+       "Required to initiate a conversation with a person.  The speaker must also specify the tone of the greeting."
+      ],
+      [
+       "say goodbye",
+       "Required to terminate a conversation with a person."
+      ],
+      [
+       "warmly",
+       "A tone that modifies a greeting."
+      ],
+      [
+       "nice",
+       "A tone that modifies a greeting."
+      ],
+      [
+       "sincere",
+       "A tone that modifies a greeting."
+      ],
+      [
+       "cool",
+       "A tone that modifies a greeting."
+      ],
+      [
+       "threatening",
+       "A tone that modifies a greeting."
+      ],
+      [
+       "haughty",
+       "A tone that modifies a greeting."
+      ],
+      [
+       "formal",
+       "A tone that modifies a greeting."
+      ],
+      [
+       "accuse",
+       "Used to confront a person who has broken a promise or betrayed you, either by making a deal about you or by tattling on you.  A friend will respond to an accusation with an apology."
+      ],
+      [
+       "tanaga count",
+       "The amount of tanaga that a person has.  This word is used as part of a deal."
+      ],
+      [
+       "katsin count",
+       "The amount of katsin that a person has.  This word is used as part of a deal."
+      ],
+      [
+       "shial count",
+       "The amount of shial that a person has.  This word is used as part of a deal."
+      ],
+      [
+       "offer-reveal",
+       "The most important verb of the game; you offer to reveal somebody’s aura-count in return for the other person agreeing to reveal another aura-count."
+      ],
+      [
+       "beg",
+       "A followup to a deal-offer that was rejected.  The same deal is offered, but you are imploring the person to accept the deal.  You are appealling to a person’s friendship with this verb."
+      ],
+      [
+       "threaten",
+       "Another followup to a deal-offer that was rejected.  Again, the same deal is offered, but this time you are attempting to intimidate the person into accepting the deal.  There is no specific bad action threatened by this verb, just a general nastiness."
+      ],
+      [
+       "betray",
+       "A verb describing either of two acts: revealing something about a person’s aura-counts in a deal, or telling a third person that the individual in question committed an act of betrayal."
+      ],
+      [
+       "go to",
+       "Go to the house of the person specified as direct object.  This doesn’t get you into the house; if nobody is home, or there is already another guest there, you will end up waiting outside the door, and can then either wait longer or give up and go elsewhere."
+      ],
+      [
+       "tanaga-attack",
+       "Use a tanaga-aura in attacking another acolyte."
+      ],
+      [
+       "katsin-attack",
+       "Use a katsin-aura in attacking another acolyte."
+      ],
+      [
+       "shial-attack",
+       "Use a shial-aura in attacking another acolyte."
+      ],
+      [
+       "Vetvel house",
+       "Vetvel’s house"
+      ],
+      [
+       "Kendra house",
+       "Kendra’s house"
+      ],
+      [
+       "Gardbore house",
+       "Gardbore’s house"
+      ],
+      [
+       "Wiki house",
+       "Wiki’s house"
+      ],
+      [
+       "Locksher house",
+       "Locksher’s house"
+      ],
+      [
+       "Zubi house",
+       "Zubi’s house"
+      ],
+      [
+       "Skordokott house",
+       "Skordokott’s house"
+      ],
+      [
+       "tanaga",
+       "tanaga"
+      ],
+      [
+       "katsin",
+       "katsin"
+      ],
+      [
+       "shial",
+       "shial"
+      ],
+      [
+       "tell",
+       "Used to tell another person about a betrayal."
+      ],
+      [
+       "accept",
+       "Accept a deal-offer; the deal is automatically consummated"
+      ],
+      [
+       "reject",
+       "Reject a deal-offer."
+      ],
+      [
+       "if",
+       "An intrinsic part of deal-sentences, linking the first party’s side of the deal with the second party’s side of the deal."
+      ],
+      [
+       "ask",
+       "used to ask somebody if you have been betrayed.  You cannot ask if anybody else has been betrayed, but you or your interlocutor can volunteer such information."
+      ],
+      [
+       "answer",
+       "Answer a question.  Only true answers are allowed.  It is possible to answer a question in such a way as to admit guilt."
+      ],
+      [
+       "that",
+       "links an ask- or tell- clause with its object-clause."
+      ],
+      [
+       "won't betray",
+       "Promise somebody that you will not betray them today."
+      ],
+      [
+       "won't attack",
+       "Promise somebody that you will not attack them tonight."
+      ],
+      [
+       "wait",
+       "Wait for one hour.  If anything happens to you during that time, you will stop waiting and start interacting.  Thus, if you wait outside a person’s door, you will stop waiting as soon as they come home or their current guest leaves."
+      ],
+      [
+       "broke trust bond",
+       "An accusation that you broke a ‘won’t betray’ promise"
+      ],
+      [
+       "broke attack bond",
+       "An accusation that you broke a ‘won’t attack’ promise"
+      ],
+      [
+       "how many?",
+       "An unspecified quantity.  You don’t know how many things."
+      ],
+      [
+       "zero",
+       "the number zero."
+      ],
+      [
+       "one",
+       "the number one."
+      ],
+      [
+       "two",
+       "the number two."
+      ],
+      [
+       "three",
+       "the number three"
+      ],
+      [
+       "four",
+       "the number four"
+      ],
+      [
+       "five",
+       "the number five"
+      ],
+      [
+       "six",
+       "the number six"
+      ],
+      [
+       "seven",
+       "the number seven"
+      ],
+      [
+       "eight",
+       "the number eight"
+      ],
+      [
+       "say feeling",
+       "express an emotion; the remaining words in this dictionary are all objects of this verb, that is, emotional expressions that the person can use."
+      ],
+      [
+       "small talk",
+       "minor niceties that convey no direct emotion"
+      ],
+      [
+       "flatter",
+       "butter them up."
+      ],
+      [
+       "trust",
+       "declares that you trust the person you’re talking to."
+      ],
+      [
+       "fear",
+       "declares that you fear the person you’re talking to."
+      ],
+      [
+       "love",
+       "declares that you love the person you’re talking to."
+      ],
+      [
+       "don’t fear",
+       "declares that you don’t fear the person you’re talking to."
+      ],
+      [
+       "don’t trust",
+       "declares that you don’t trust the person you’re talking to."
+      ],
+      [
+       "don’t love",
+       "declares that you don’t love the person you’re talking to."
+      ],
+      [
+       "forgive",
+       "This is a response to a nasty action from another person."
+      ],
+      [
+       "yell at",
+       "Expresses great anger."
+      ],
+      [
+       "thanks",
+       "A nice thing to say after a favor."
+      ],
+      [
+       "sorry",
+       "A response to an accusation.  Makes you somewhat beholden to the person to whom you apologize."
+      ],
+      [
+       "deride",
+       "Make fun of somebody"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sec.18",
+   "title": "Acknowledgements",
+   "blocks": [
+    {
+     "p": "I labored over a year making this game; many people helped me.  Sandy Schneider, my editor, backed up my riskier decisions and offered a shoulder on which to cry when things seemed hopeless.  Christa Hansen, my consultant on linguistics and psychology, helped with the design of the eeyal-language, the artificial personality, and offered many suggestions on the overall design of the game.  Toni Thompson executed most of the artwork.  There were many playtesters whose complaints and suggestions profoundly influenced the game:  Eric Goldberg, Susan Lee-Merrow, Dave Menconi, Gregg Williams, and Dale and Pam Yocum.  And, as always, my wife Kathy hung in with moral support and solid advice through another trying project."
+    }
+   ]
+  }
+ ]
+}

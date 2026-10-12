@@ -1,0 +1,1204 @@
+{
+ "source": "C:\\Users\\fuksm\\Pet\\TB\\trust-and-betrayal-the-legacy-of-siboot",
+ "screen": [
+  640,
+  480
+ ],
+ "palettes": {
+  "main": [
+   [
+    251,
+    251,
+    251
+   ],
+   [
+    251,
+    251,
+    0
+   ],
+   [
+    251,
+    81,
+    170
+   ],
+   [
+    251,
+    0,
+    251
+   ],
+   [
+    251,
+    0,
+    0
+   ],
+   [
+    235,
+    186,
+    154
+   ],
+   [
+    227,
+    227,
+    227
+   ],
+   [
+    219,
+    178,
+    73
+   ],
+   [
+    186,
+    186,
+    186
+   ],
+   [
+    186,
+    146,
+    8
+   ],
+   [
+    178,
+    0,
+    251
+   ],
+   [
+    105,
+    0,
+    251
+   ],
+   [
+    73,
+    251,
+    251
+   ],
+   [
+    32,
+    81,
+    251
+   ],
+   [
+    0,
+    170,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "portrait_vetvel": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    142,
+    81,
+    32
+   ],
+   [
+    0,
+    65,
+    255
+   ],
+   [
+    174,
+    134,
+    0
+   ],
+   [
+    207,
+    166,
+    40
+   ],
+   [
+    255,
+    231,
+    174
+   ],
+   [
+    231,
+    207,
+    113
+   ],
+   [
+    231,
+    207,
+    105
+   ],
+   [
+    223,
+    182,
+    73
+   ],
+   [
+    109,
+    109,
+    109
+   ],
+   [
+    150,
+    69,
+    48
+   ],
+   [
+    117,
+    69,
+    44
+   ],
+   [
+    130,
+    52,
+    48
+   ],
+   [
+    105,
+    24,
+    8
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "portrait_kendra": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    231,
+    158,
+    255
+   ],
+   [
+    0,
+    158,
+    255
+   ],
+   [
+    215,
+    182,
+    65
+   ],
+   [
+    89,
+    158,
+    0
+   ],
+   [
+    231,
+    113,
+    247
+   ],
+   [
+    0,
+    97,
+    207
+   ],
+   [
+    174,
+    81,
+    190
+   ],
+   [
+    247,
+    223,
+    142
+   ],
+   [
+    109,
+    109,
+    109
+   ],
+   [
+    150,
+    69,
+    48
+   ],
+   [
+    117,
+    69,
+    44
+   ],
+   [
+    130,
+    52,
+    48
+   ],
+   [
+    105,
+    24,
+    8
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "portrait_gardbore": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    89,
+    158,
+    0
+   ],
+   [
+    48,
+    158,
+    0
+   ],
+   [
+    0,
+    158,
+    0
+   ],
+   [
+    121,
+    0,
+    65
+   ],
+   [
+    166,
+    0,
+    0
+   ],
+   [
+    166,
+    158,
+    0
+   ],
+   [
+    255,
+    158,
+    0
+   ],
+   [
+    199,
+    158,
+    0
+   ],
+   [
+    109,
+    109,
+    109
+   ],
+   [
+    150,
+    69,
+    48
+   ],
+   [
+    117,
+    69,
+    44
+   ],
+   [
+    130,
+    52,
+    48
+   ],
+   [
+    105,
+    24,
+    8
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "portrait_wiki": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    255,
+    243,
+    4
+   ],
+   [
+    0,
+    101,
+    16
+   ],
+   [
+    85,
+    44,
+    4
+   ],
+   [
+    195,
+    195,
+    195
+   ],
+   [
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ],
+   [
+    109,
+    109,
+    109
+   ],
+   [
+    150,
+    69,
+    48
+   ],
+   [
+    117,
+    69,
+    44
+   ],
+   [
+    130,
+    52,
+    48
+   ],
+   [
+    105,
+    24,
+    8
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "portrait_locksher": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    223,
+    24,
+    97
+   ],
+   [
+    223,
+    24,
+    255
+   ],
+   [
+    158,
+    24,
+    255
+   ],
+   [
+    24,
+    24,
+    255
+   ],
+   [
+    255,
+    0,
+    255
+   ],
+   [
+    255,
+    247,
+    247
+   ],
+   [
+    158,
+    0,
+    174
+   ],
+   [
+    231,
+    199,
+    97
+   ],
+   [
+    109,
+    109,
+    109
+   ],
+   [
+    150,
+    69,
+    48
+   ],
+   [
+    117,
+    69,
+    44
+   ],
+   [
+    130,
+    52,
+    48
+   ],
+   [
+    105,
+    24,
+    8
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "portrait_zubi": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    0,
+    255,
+    255
+   ],
+   [
+    0,
+    215,
+    255
+   ],
+   [
+    8,
+    182,
+    255
+   ],
+   [
+    0,
+    121,
+    255
+   ],
+   [
+    0,
+    89,
+    255
+   ],
+   [
+    0,
+    56,
+    255
+   ],
+   [
+    142,
+    105,
+    0
+   ],
+   [
+    0,
+    0,
+    174
+   ],
+   [
+    109,
+    109,
+    109
+   ],
+   [
+    150,
+    69,
+    48
+   ],
+   [
+    117,
+    69,
+    44
+   ],
+   [
+    130,
+    52,
+    48
+   ],
+   [
+    105,
+    24,
+    8
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "portrait_skord": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    255,
+    0,
+    0
+   ],
+   [
+    182,
+    0,
+    0
+   ],
+   [
+    105,
+    0,
+    0
+   ],
+   [
+    239,
+    239,
+    239
+   ],
+   [
+    231,
+    231,
+    231
+   ],
+   [
+    0,
+    255,
+    215
+   ],
+   [
+    199,
+    199,
+    199
+   ],
+   [
+    255,
+    97,
+    97
+   ],
+   [
+    109,
+    109,
+    109
+   ],
+   [
+    150,
+    69,
+    48
+   ],
+   [
+    117,
+    69,
+    44
+   ],
+   [
+    130,
+    52,
+    48
+   ],
+   [
+    105,
+    24,
+    8
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "portrait_chris": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    190,
+    0,
+    0
+   ],
+   [
+    113,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ],
+   [
+    255,
+    215,
+    190
+   ],
+   [
+    0,
+    24,
+    166
+   ],
+   [
+    255,
+    199,
+    158
+   ],
+   [
+    239,
+    158,
+    97
+   ],
+   [
+    247,
+    174,
+    121
+   ],
+   [
+    109,
+    109,
+    109
+   ],
+   [
+    150,
+    69,
+    48
+   ],
+   [
+    117,
+    69,
+    44
+   ],
+   [
+    130,
+    52,
+    48
+   ],
+   [
+    105,
+    24,
+    8
+   ],
+   [
+    69,
+    16,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "logo": [
+   [
+    255,
+    255,
+    255
+   ],
+   [
+    255,
+    243,
+    4
+   ],
+   [
+    255,
+    101,
+    0
+   ],
+   [
+    170,
+    4,
+    4
+   ],
+   [
+    255,
+    8,
+    138
+   ],
+   [
+    48,
+    0,
+    121
+   ],
+   [
+    117,
+    117,
+    215
+   ],
+   [
+    0,
+    170,
+    235
+   ],
+   [
+    28,
+    182,
+    20
+   ],
+   [
+    0,
+    101,
+    16
+   ],
+   [
+    85,
+    44,
+    4
+   ],
+   [
+    146,
+    113,
+    56
+   ],
+   [
+    195,
+    195,
+    195
+   ],
+   [
+    130,
+    130,
+    130
+   ],
+   [
+    65,
+    65,
+    65
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ]
+ },
+ "wordIcons": {
+  "file": "wordicons.png",
+  "cell": [
+   32,
+   32
+  ],
+  "cols": 16,
+  "count": 128,
+  "index": "word n (1..128) at cell n-1",
+  "palette": "main"
+ },
+ "wordText": {
+  "file": "wordtext.png",
+  "cell": [
+   32,
+   32
+  ],
+  "cols": 16,
+  "count": 128,
+  "index": "word n (1..128) at cell n-1",
+  "palette": "main"
+ },
+ "emotionFaces": {
+  "sheet": "efaces.png",
+  "cell": [
+   96,
+   96
+  ],
+  "cols": 8,
+  "files": [
+   "faces/eface01.png",
+   "faces/eface02.png",
+   "faces/eface03.png",
+   "faces/eface04.png",
+   "faces/eface05.png",
+   "faces/eface06.png",
+   "faces/eface07.png",
+   "faces/eface08.png",
+   "faces/eface09.png",
+   "faces/eface10.png",
+   "faces/eface11.png",
+   "faces/eface12.png",
+   "faces/eface13.png",
+   "faces/eface14.png",
+   "faces/eface15.png",
+   "faces/eface16.png",
+   "faces/eface17.png",
+   "faces/eface18.png",
+   "faces/eface19.png",
+   "faces/eface20.png",
+   "faces/eface21.png",
+   "faces/eface22.png",
+   "faces/eface23.png",
+   "faces/eface24.png",
+   "faces/eface25.png",
+   "faces/eface26.png",
+   "faces/eface27.png",
+   "faces/eface28.png",
+   "faces/eface29.png",
+   "faces/eface30.png",
+   "faces/eface31.png",
+   "faces/eface32.png",
+   "faces/eface33.png",
+   "faces/eface34.png"
+  ],
+  "palette": "main",
+  "draw": "FillRect(FaceRect, white) then PutImage NormalPut at FaceRect.topLeft"
+ },
+ "portraits": {
+  "vetvel": {
+   "file": "portraits/vetvel.png",
+   "index": 1,
+   "size": [
+    158,
+    158
+   ],
+   "palette": "portrait_vetvel",
+   "note": "drawing it reprograms DAC entries 0..15 with this palette (whole screen changes)"
+  },
+  "kendra": {
+   "file": "portraits/kendra.png",
+   "index": 2,
+   "size": [
+    158,
+    158
+   ],
+   "palette": "portrait_kendra",
+   "note": "drawing it reprograms DAC entries 0..15 with this palette (whole screen changes)"
+  },
+  "gardbore": {
+   "file": "portraits/gardbore.png",
+   "index": 3,
+   "size": [
+    158,
+    158
+   ],
+   "palette": "portrait_gardbore",
+   "note": "drawing it reprograms DAC entries 0..15 with this palette (whole screen changes)"
+  },
+  "wiki": {
+   "file": "portraits/wiki.png",
+   "index": 4,
+   "size": [
+    158,
+    158
+   ],
+   "palette": "portrait_wiki",
+   "note": "drawing it reprograms DAC entries 0..15 with this palette (whole screen changes)"
+  },
+  "locksher": {
+   "file": "portraits/locksher.png",
+   "index": 5,
+   "size": [
+    158,
+    158
+   ],
+   "palette": "portrait_locksher",
+   "note": "drawing it reprograms DAC entries 0..15 with this palette (whole screen changes)"
+  },
+  "zubi": {
+   "file": "portraits/zubi.png",
+   "index": 6,
+   "size": [
+    158,
+    158
+   ],
+   "palette": "portrait_zubi",
+   "note": "drawing it reprograms DAC entries 0..15 with this palette (whole screen changes)"
+  },
+  "skord": {
+   "file": "portraits/skord.png",
+   "index": 7,
+   "size": [
+    158,
+    158
+   ],
+   "palette": "portrait_skord",
+   "note": "drawing it reprograms DAC entries 0..15 with this palette (whole screen changes)"
+  },
+  "chris": {
+   "file": "portraits/chris.png",
+   "index": 8,
+   "size": [
+    158,
+    158
+   ],
+   "palette": "portrait_chris",
+   "note": "drawing it reprograms DAC entries 0..15 with this palette (whole screen changes)"
+  }
+ },
+ "logo": {
+  "file": "logo.png",
+  "size": [
+   512,
+   200
+  ],
+  "pos": [
+   64,
+   130
+  ],
+  "palette": "logo",
+  "paletteEntriesSet": 15,
+  "note": "SetPalette entries 0..14 only"
+ },
+ "frame": {
+  "file": "frame.png",
+  "size": [
+   247,
+   247
+  ],
+  "palette": "portrait_* (entries 9..15)",
+  "hole": [
+   45,
+   45,
+   201,
+   202
+  ],
+  "note": "never loaded by the DOS code (victory screen allocates 0x77AA bytes = its size, then does not use it)"
+ },
+ "fonts": {
+  "rmn6_13": "fonts/rmn6_13.json",
+  "rmn6_19": "fonts/rmn6_19.json",
+  "rmn4_08": "fonts/rmn4_08.json",
+  "ss2_14": "fonts/ss2_14.json",
+  "bgi_small_metrics": "fonts/bgi_small.json"
+ },
+ "fontUse": {
+  "rmn6_13": "all game text, menus, dialogs",
+  "rmn6_19": "victory screen (OVL_3BD)",
+  "rmn4_08": "unused",
+  "ss2_14": "unused",
+  "bgi_small_metrics": "only TextWidth/TextHeight used for menu-title/menu-item centering & dialog vertical centering"
+ },
+ "text": {
+  "strings": "text/strings.txt",
+  "stories": {
+   "1": "text/story1.txt",
+   "2": "text/story2.txt",
+   "3": "text/story3.txt",
+   "4": "text/story4.txt",
+   "5": "text/story5.txt",
+   "6": "text/story6.txt",
+   "7": "text/story7.txt",
+   "8": "text/story8.txt",
+   "9": "text/story9.txt",
+   "10": "text/story10.txt",
+   "11": "text/story11.txt",
+   "12": "text/story12.txt",
+   "13": "text/story13.txt",
+   "14": "text/story14.txt",
+   "15": "text/story15.txt",
+   "16": "text/story16.txt",
+   "17": "text/story17.txt",
+   "18": "text/story18.txt",
+   "19": "text/story19.txt",
+   "20": "text/story20.txt",
+   "21": "text/story21.txt",
+   "22": "text/story22.txt",
+   "23": "text/story23.txt",
+   "24": "text/story24.txt",
+   "25": "text/story25.txt",
+   "26": "text/story26.txt",
+   "27": "text/story27.txt",
+   "28": "text/story28.txt",
+   "29": "text/story29.txt",
+   "30": "text/story30.txt",
+   "31": "text/story31.txt",
+   "32": "text/story32.txt",
+   "33": "text/story33.txt",
+   "34": "text/story34.txt",
+   "35": "text/story35.txt",
+   "36": "text/story36.txt",
+   "37": "text/story37.txt",
+   "38": "text/story38.txt",
+   "39": "text/story39.txt",
+   "40": "text/story40.txt",
+   "41": "text/story41.txt",
+   "42": "text/story42.txt",
+   "43": "text/story43.txt",
+   "44": "text/story44.txt"
+  },
+  "dossiers": {
+   "1": "text/dossier1.txt",
+   "2": "text/dossier2.txt",
+   "3": "text/dossier3.txt",
+   "4": "text/dossier4.txt",
+   "5": "text/dossier5.txt",
+   "6": "text/dossier6.txt",
+   "7": "text/dossier7.txt",
+   "8": "text/dossier8.txt"
+  },
+  "menus": "text/siboot.mnu",
+  "dialogs": {
+   "quit": "text/quit.dia"
+  }
+ },
+ "cursor": {
+  "hotspot": [
+   0,
+   0
+  ],
+  "and": [
+   8191,
+   4095,
+   2047,
+   1023,
+   511,
+   255,
+   127,
+   63,
+   31,
+   15,
+   511,
+   4351,
+   12543,
+   63615,
+   63615,
+   64767
+  ],
+  "xor": [
+   0,
+   24576,
+   28672,
+   30720,
+   31744,
+   32256,
+   32512,
+   32640,
+   32704,
+   31744,
+   27648,
+   17920,
+   1536,
+   768,
+   768,
+   0
+  ],
+  "note": "int33 fn9 graphics cursor: pixel=(screen AND and) XOR xor; xor-bit => VRAM 15 (black), and=0&xor=0 => VRAM 0 (white)"
+ },
+ "patterns": {
+  "white": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "black": [
+   255,
+   255,
+   255,
+   255,
+   255,
+   255,
+   255,
+   255
+  ],
+  "gray": [
+   170,
+   85,
+   170,
+   85,
+   170,
+   85,
+   170,
+   85
+  ],
+  "ltGray": [
+   170,
+   85,
+   170,
+   85,
+   170,
+   85,
+   170,
+   85
+  ],
+  "dkGray": [
+   170,
+   85,
+   170,
+   85,
+   170,
+   85,
+   170,
+   85
+  ],
+  "connector": "gray (GetIndPattern always returns gray)",
+  "note": "row = y mod 8 (screen-absolute), bit 7 = x mod 8 == 0; 1-bit = current colour, 0-bit = VRAM 0"
+ },
+ "vgaColour": {
+  "palettes": "DAC-exact (file value shr 2, expanded c<<2|c>>4)",
+  "rule": "BGI colour/VRAM value c shows palette entry bitrev4(c); image pixel value v = palette entry v",
+  "bitrev4": [
+   0,
+   8,
+   4,
+   12,
+   2,
+   10,
+   6,
+   14,
+   1,
+   9,
+   5,
+   13,
+   3,
+   11,
+   7,
+   15
+  ]
+ }
+}

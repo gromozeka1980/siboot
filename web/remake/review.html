@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Проверка графики</title>
+<style>
+  /* Art review: approve / reject every redrawn image; decisions go to remake_art/review.json via the dev server. */
+  :root { --bg: #17131f; --panel: #221c2d; --panel2: #2b2438; --line: #3a3149; --ink: #efe6d6; --muted: #a596b4;
+    --ok: #7fc98a; --bad: #e07a5f; --gold: #e0b45c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: rgba(23,19,31,.95); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0 8px 0 0; }
+  .stat { color: var(--muted); } .stat b { color: var(--ink); }
+  button, select { font: inherit; color: inherit; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+  button.primary { background: var(--gold); color: #20180c; border-color: var(--gold); font-weight: 600; }
+  main { padding: 16px; max-width: 1600px; margin: 0 auto; }
+  h2 { font-size: 20px; margin: 22px 0 10px; display: flex; gap: 12px; align-items: center; }
+  h2 button { font-size: 12px; padding: 4px 10px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--w, 220px), 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 2px solid var(--line); border-radius: 12px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .card.ok { border-color: var(--ok); } .card.bad { border-color: var(--bad); }
+  .imgs { display: flex; gap: 6px; align-items: flex-start; }
+  .imgs img.new { width: 100%; min-width: 0; flex: 1; border-radius: 8px; cursor: zoom-in; background: #333; }
+  .ref { width: 34%; flex: none; display: flex; flex-direction: column; gap: 2px; font-size: 11px; color: var(--muted); }
+  .ref img, .ref .spr { width: 100%; border-radius: 6px; image-rendering: pixelated; }
+  .spr { aspect-ratio: 1; background: url(../assets/wordicons.png) calc(var(--x) * -100%) calc(var(--y) * -100%) / 1600% 800%; }
+  .name { font-weight: 600; } .file { font-size: 11px; color: var(--muted); word-break: break-all; }
+  .btns { display: flex; gap: 6px; } .btns button { flex: 1; }
+  .card.ok [data-v=ok] { background: var(--ok); color: #102010; border-color: var(--ok); }
+  .card.bad [data-v=bad] { background: var(--bad); color: #200c08; border-color: var(--bad); }
+  textarea { width: 100%; min-height: 54px; background: var(--panel2); color: var(--ink); border: 1px solid var(--bad); border-radius: 8px; padding: 6px; font: inherit; resize: vertical; }
+  .zoom { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: grid; place-items: center; z-index: 10; cursor: zoom-out; }
+  .zoom img { max-width: 92vw; max-height: 92vh; border-radius: 10px; }
+  .msg { color: var(--ok); } .msg.err { color: var(--bad); }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Проверка графики</h1>
+  <span class="stat">одобрено <b id="nOk">0</b> · на переделку <b id="nBad">0</b> · не решено <b id="nNone">0</b></span>
+  <select id="filter"><option value="all">показать все</option><option value="none">только не решённые</option><option value="bad">только на переделку</option><option value="ok">только одобренные</option></select>
+  <button class="primary" id="send">Отправить решения</button>
+  <span class="msg" id="msg"></span>
+</header>
+<main id="main"></main>
+
+<script type="module">
+  const KEY = 'siboot.review';
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } };
+  const state = load(); // file -> {v: 'ok'|'bad', note}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* ignore */ } };
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+
+  const NAMES = { vetvel: 'Ветвел', kendra: 'Кендра', gardbore: 'Гардбор', wiki: 'Вики', locksher: 'Локшер', zubi: 'Зуби', skord: 'Скордокотт', chris: 'Крис' };
+  const EXPR = { neutral: 'спокойствие', warm: 'дружелюбие', love: 'любовь', trust: 'доверие', suspicious: 'подозрение', afraid: 'страх',
+    angry: 'гнев', contempt: 'презрение', sorry: 'вина / мольба', curious: 'любопытство' };
+  const PLACES = { road: 'дорога', night: 'ночная колония', title: 'заставка' };
+  const [files, words, regen] = await Promise.all([
+    fetch('../assets/remake/manifest.json').then(r => r.json()),
+    fetch('../assets/remake/regenerated.json').then(r => r.json()).catch(() => ({})),
+    fetch('../assets/i18n/ru/words.json').then(r => r.json()).catch(() => ({})),
+  ]);
+  // a redone file is undecided again (and marked "new")
+  for (const [f, at] of Object.entries(regen)) if (state[f] && (state[f].at || 0) < at) delete state[f];
+  save();
+  const word = n => (words[n] || []).reduce((a, l) => a.endsWith('-') ? a.slice(0, -1) + l : a ? a + ' ' + l : l, '');
+  const v = Date.now(); // cache-buster: regenerated files keep their names
+
+  function describe(f) {
+    const [kind, a, b] = f.replace(/\.(png|webp)$/, '').split('/');
+    if (kind === 'portraits') return { group: 'Портреты', name: NAMES[a], ref: `<img src="../assets/portraits/${a}.png" alt="">`, refLabel: 'оригинал' };
+    if (kind === 'places') return { group: 'Места', name: a.startsWith('home_') ? 'дом: ' + NAMES[a.slice(5)] : PLACES[a], wide: true };
+    if (kind === 'expressions') return { group: 'Эмоции: ' + NAMES[a], name: EXPR[b] || b, ref: `<img src="../assets/remake/portraits/${a}.webp?v=${v}" alt="">`, refLabel: 'основа' };
+    if (kind === 'stories') return { group: 'Истории', name: 'история ' + a.slice(1), wide: true };
+    if (kind === 'novella') return { group: 'Иллюстрации к повести', name: 'глава ' + (Number(a.slice(2)) + 1), wide: true };
+    if (kind === 'icons') { const n = Number(a); return { group: 'Иконки ияла', name: `${n} · ${word(n)}`, ref: `<div class="spr" style="--x:${(n - 1) % 16};--y:${Math.floor((n - 1) / 16)}"></div>`, refLabel: 'оригинал' }; }
+    return { group: kind, name: f };
+  }
+
+  const groups = new Map();
+  // icons are vectorised originals now (tools/vectorize_icons.py): nothing to review
+  for (const f of files) { if (f.startsWith('iconsvg/') || f.startsWith('icons/')) continue; const d = describe(f); if (!groups.has(d.group)) groups.set(d.group, []); groups.get(d.group).push({ f, ...d }); }
+  const main = document.getElementById('main');
+  main.innerHTML = [...groups].map(([g, items]) => `<section><h2>${esc(g)} <button data-all="${esc(g)}">одобрить все не решённые</button></h2>
+    <div class="grid" style="--w:${items[0].wide ? '340px' : '200px'}">${items.map(it => `
+      <div class="card" data-f="${esc(it.f)}" data-g="${esc(g)}">
+        <div class="imgs"><img class="new" src="../assets/remake/${it.f}?v=${v}" alt="" loading="lazy">
+          ${it.ref ? `<div class="ref">${it.ref}<span>${it.refLabel}</span></div>` : ''}</div>
+        <div class="name">${esc(it.name)}${regen[it.f] ? ' <span style="color:var(--gold)">· новая версия</span>' : ''}</div><div class="file">${esc(it.f)}</div>
+        <div class="btns"><button data-v="ok">✓ годится</button><button data-v="bad">✗ переделать</button></div>
+        <textarea class="hidden" placeholder="Что не так? (необязательно — подскажет, как переделать)"></textarea>
+      </div>`).join('')}</div></section>`).join('');
+
+  function paint(card) {
+    const st = state[card.dataset.f];
+    card.classList.toggle('ok', st?.v === 'ok'); card.classList.toggle('bad', st?.v === 'bad');
+    const ta = card.querySelector('textarea'); ta.classList.toggle('hidden', st?.v !== 'bad'); ta.value = st?.note || '';
+  }
+  function counts() {
+    const all = files.length, ok = files.filter(f => state[f]?.v === 'ok').length, bad = files.filter(f => state[f]?.v === 'bad').length;
+    nOk.textContent = ok; nBad.textContent = bad; nNone.textContent = all - ok - bad;
+    const flt = filter.value;
+    document.querySelectorAll('.card').forEach(c => { const s = state[c.dataset.f]?.v || 'none'; c.classList.toggle('hidden', flt !== 'all' && s !== flt); });
+  }
+  document.querySelectorAll('.card').forEach(paint); counts();
+
+  main.addEventListener('click', e => {
+    const card = e.target.closest('.card');
+    if (e.target.matches('img.new')) {
+      const z = document.createElement('div'); z.className = 'zoom'; z.innerHTML = `<img src="${e.target.src}" alt="">`;
+      z.onclick = () => z.remove(); document.body.appendChild(z); return;
+    }
+    const b = e.target.closest('[data-v]');
+    if (b && card) {
+      const f = card.dataset.f, cur = state[f]?.v;
+      if (cur === b.dataset.v) delete state[f]; else state[f] = { ...state[f], v: b.dataset.v, at: Date.now() };
+      save(); paint(card); counts();
+      if (state[f]?.v === 'bad') card.querySelector('textarea').focus();
+    }
+    const all = e.target.closest('[data-all]');
+    if (all) {
+      document.querySelectorAll(`.card[data-g="${CSS.escape(all.dataset.all)}"]`).forEach(c => { if (!state[c.dataset.f]) state[c.dataset.f] = { v: 'ok' }; paint(c); });
+      save(); counts();
+    }
+  });
+  main.addEventListener('input', e => {
+    if (!e.target.matches('textarea')) return;
+    const f = e.target.closest('.card').dataset.f; state[f] = { ...state[f], note: e.target.value }; save();
+  });
+  filter.onchange = counts;
+
+  send.onclick = async () => {
+    const out = { at: new Date().toISOString(), decisions: Object.fromEntries(files.filter(f => state[f]).map(f => [f, state[f]])) };
+    try {
+      const r = await fetch('/__review', { method: 'POST', body: JSON.stringify(out, null, 1) });
+      if (!r.ok) throw new Error(r.status);
+      msg.className = 'msg'; msg.textContent = `Отправлено: ${Object.keys(out.decisions).length} решений. Напишите Claude в чате «посмотри ревью».`;
+    } catch (err) { msg.className = 'msg err'; msg.textContent = 'Не удалось отправить (' + err.message + '): сервер не запущен?'; }
+  };
+</script>
+</body>
+</html>

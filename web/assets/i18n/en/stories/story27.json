@@ -1,0 +1,29 @@
+{
+ "text": "You decide that this might be a good opportunity to discuss with Gardbore your problem with Kendra.  Gardbore is, after all, the most senior acolyte and is generally acknowledged to be a wise person.  You outline the situation, explaining how you have twice now asked Kendra to fulfill her responsibilities as your sin-bearer, and twice she has refused.  You ask Gardbore for advice.  He mulls over the matter for a moment or two, then advises you to try again with Kendra.  There is at this time no authority who can order Kendra to discharge her duties.  Your only hope is to try to reason with her, remind her that this is her duty as a Kiran.  Yes, he concludes, that is the best thing you can do.  You lean back in your chair, exasperated.  You know perfectly well that Kendra is not going to respond to reason.  What do you tell Gardbore? ",
+ "options": [
+  {
+   "title": "Nothing; the old fool doesn't understand.  Forget his advice.",
+   "results": [
+    "Gardbore takes your silence for acquiescence."
+   ]
+  },
+  {
+   "title": "\"I'll try one more time.\"",
+   "results": [
+    "Gardbore smiles sagely, probably thinking you a young fool."
+   ]
+  },
+  {
+   "title": "\"But, Kendra won't respond to reason, I'm sure!\"",
+   "results": [
+    "Gardbore says to give her another chance."
+   ]
+  },
+  {
+   "title": "\"You don't understand; Kendra won't respond to reason.\"",
+   "results": [
+    "Gardbore shrugs his shoulders, saying, \"In that case, you have a problem.\""
+   ]
+  }
+ ]
+}

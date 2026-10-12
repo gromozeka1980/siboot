@@ -1,0 +1,29 @@
+{
+ "text": "{name} suddenly pauses.  {his} eyes lock onto something behind you.  {he} stares intently at something.  You turn around to see the object of {name}'s stare.  There, standing at the window, is Chris Crawford.  His face is pressed against the glass, his nose bent and his lips flattened against the pane.  He has apparently been watching you for some time now.  A low whistle of disgust escapes {name}'s lips.  {name} looks down at the floor, shaking his head in disgust.  The two of you step over to the window, anger mixed with curiosity.  Crawford pulls his face away from the pane and speaks slowly and loudly, so you can hear him through the window:  \"Are we having fun yet?\" ",
+ "options": [
+  {
+   "title": "\"Yes, it's just peachy-keen!\"",
+   "results": [
+    "He grins broadly and goes away."
+   ]
+  },
+  {
+   "title": "You draw the curtain closed.",
+   "results": [
+    "He laughs maniacally, \"Remember, I'm the programmer!  I know everything you do!\""
+   ]
+  },
+  {
+   "title": "\"Go away, you peeping Tom!\"",
+   "results": [
+    "You shouldn't be mean to The Designer.  The sky darkens.  Distant thunder rumbles."
+   ]
+  },
+  {
+   "title": "\"You call this FUN?!?!?\"",
+   "results": [
+    "His feelings are hurt.  He walks away dejectedly."
+   ]
+  }
+ ]
+}

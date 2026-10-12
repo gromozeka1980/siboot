@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dosref",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "_dosref/serve.py",
+        "8765"
+      ],
+      "port": 8765
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "_dosref/serve.py",
+        "8766",
+        "web",
+        "_dosref/shots_web"
+      ],
+      "port": 8766
+    }
+  ]
+}

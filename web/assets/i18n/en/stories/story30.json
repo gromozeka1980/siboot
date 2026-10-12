@@ -1,0 +1,29 @@
+{
+ "text": "\"Aha!  There you are!\"  It is {myFiance}, your fiance.  Actually, your relationship with {myFiance} is a little more complicated than that.  Acolytes are expected to refrain from marriage until they retire from their acolyte status.  This, however, is not so much a social rule as an item of pride for many acolytes.  The notion here is that the acolyte is so absorbed in preparations for the candidacy that he or she eschews the distractions of a marriage.  In some ways, the celibacy of acolytes is a kind of proud statement of absolute dedication to the preparations for candidacy.  Few acolytes are willing to concede such a thing to their rivals, so everybody suffers together.  However, the social spirit is irrepressible, and over the years there has arisen a number of conventions that take the hard edge off of this anti-social ideal.  The arithmetic of marriage on Kira is inescapable.  At any given time, there will be two or three potential mates for any given person.  Careful regulation of birthrates by the Shepherds has seen to it that the numbers have little variation in them.  Most Kirans marry in their twenties; any Kiran who has not married by the age of thirty will have little choice as to his or her mate.  Thus, when {myFiance} rejected two different offers of marriage, all other options were foreclosed and {myFiance} had in effect declared as your fiance.  You, of course, have very little choice in the matter; all other potential mates have long since been married.  Your choice is {myFiance} or loneliness.  Romance, as always, adapts itself to reality, and you have long since accepted {myFiance}'s attentions.  You are not married, of course, and so retain separate households, but the two of you both know that as soon as this candidacy is over you will be married, and you have taken solace in each other's company in the meantime.  And it is certainly in {myFiance}'s best interests to assist you in any way possible with your candidacy.\r\tSo here comes {myFiance}.  \"I sure am glad I found you.  I've been talking to {name}, and {he} seems disturbed about you.  I couldn't put my finger on it.  Look, I think that {he} has a lot of faith in me.  Is there anything you'd like me to tell {him}?\" ",
+ "options": [
+  {
+   "title": "\"No, don't bother.\"",
+   "results": [
+    "{myFiance} shrugs. \"OK, if that's what you want.\""
+   ]
+  },
+  {
+   "title": "\"Yes, tell {him} that I really do like {him}.\"",
+   "results": [
+    "\"Will do.  I'll check with you later!\""
+   ]
+  },
+  {
+   "title": "\"Yes, tell {him} that {he} can trust me.\"",
+   "results": [
+    "\"OK, I'll tell {him} that.\""
+   ]
+  },
+  {
+   "title": "\"Yes, tell {name} that {he}'d better watch {his} step around me.\"",
+   "results": [
+    "\"Wow! OK, I'll give {him} the message.\""
+   ]
+  }
+ ]
+}

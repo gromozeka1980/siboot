@@ -1,0 +1,21 @@
+# secrets
+.env
+# not ours to redistribute / reference only
+*.pdf
+_ref/
+_backup/
+trust-and-betrayal-the-legacy-of-siboot/
+# generated art sources (~1 GB), cost logs, review state
+remake_art/out/
+remake_art/archive/
+remake_art/pdf/
+remake_art/spend.json
+remake_art/review.json
+# test screenshots and run output
+_dosref/**/*.png
+_dosref/**/*.jpg
+_dosref/shots*/
+node_modules/
+__pycache__/
+*.log
+_dosref/*.jsdos

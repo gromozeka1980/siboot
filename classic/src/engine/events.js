@@ -1,0 +1,346 @@
+// Random events ("stories"): port of DOS REvent (OVL_3B7), reconstruction _ref/dos_src/REvent.pas.
+// Split into four layers so the story system can later be modernised independently:
+//   1. selectStory  - pick a story by StoryParm (pure)
+//   2. parseStory   - text substitution + option extraction (pure)
+//   3. execComd     - option command interpreter (state mutation, returns result text)
+//   4. randEvent    - the DOS story screen (drawing, paging, option selection, Done/OK)
+
+import { div } from './rng.js';
+import { rect } from '../platform/screen.js';
+import { Pat } from '../ui/qd.js';
+
+const CR = 13, BSL = 92; // '\r', '\\'
+const OPTN_MAX = 500;
+
+// ------------------------------------------------------------------ 1. selection
+const mh = v => Math.max(-1, Math.min(1, div(v, 32)));
+
+/** Returns the chosen story number, or <=0 if none. `random` = g.random (drawn only for eligible slots). */
+export function selectStory(s, context, who, random) {
+  const P = s.player;
+  const LoveMH = mh(s.love[who][P]), TrustMH = mh(s.trust[who][P]), FearMH = mh(s.fear[who][P]);
+  let storyNum = -1, i = 1;
+  do {
+    const t = s.storyParm[i];
+    if (t >= 0 && random() > 29000) {
+      let x = t % 8;
+      if (x === who || x === 0) {
+        x = div(t, 8) % 8;
+        if (x === context || x === 0) {
+          x = div(t, 64) % 4;
+          const y = (div(t, 256) % 4) - 1;
+          const ok = x === 0 ? true : x === 1 ? LoveMH === y : x === 2 ? TrustMH === y : FearMH === y;
+          if (ok && div(t, 1024) === 0) storyNum = i;
+        }
+      }
+    }
+    i++;
+  } while (!(i === 100 || storyNum >= 0));
+  return storyNum;
+}
+
+// ------------------------------------------------------------------ 2. parsing
+const NO_FACE = [9, 10, 19, 20, 21, 22, 23, 24, 25, 30, 42];
+const CHRIS_FACE = [15, 16, 17, 18, 37, 38, 39, 40, 41];
+
+/**
+ * Parses raw STORYn text for character `who`. `g` supplies charName/male/species/fiance and s.player.
+ * Returns {text, faceWho, options: [{title, command}] (4), parmOps: [{op:'K'|'L', n}], errors}.
+ * `text` is exactly the buffer DrawStory pages through (StoryOut[0..LastChar-1]); the slot of the
+ * first '\' is left as '\0' (DOS: uninitialised). `command` = OptnComd[i][1..]: command[k-1] = OptnComd[k].
+ */
+export function parseStory(raw, storyNum, who, g) {
+  const P = g.s.player, male = g.male(who);
+  const out = []; // StoryOut as char codes
+  const errors = [];
+  let j = 0, lastChar = 0;
+  const concat = str => { for (let i = 0; i < str.length; i++) out[j + i] = str.charCodeAt(i); j += str.length - 1; };
+  for (let i = 0; i < raw.length; i++) {
+    let capFlag = true;
+    const oldJ = j, c = raw.charCodeAt(i);
+    switch (raw[i]) {
+      case '~': concat('you'); break;
+      case '%': concat(g.charName(who)); capFlag = false; break;
+      case '@': concat(male ? 'he' : 'she'); break;
+      case '#': concat(male ? 'his' : 'hers'); break;
+      case '$': concat(male ? 'him' : 'her'); break;
+      case '^': concat(male ? 'his' : 'her'); break;
+      case '&': concat(g.species(who)); break;
+      case '=': concat(g.fiance(P)); break;
+      case ']': concat(g.fiance(who)); break;
+      case '\\':
+        if (lastChar === 0) lastChar = j + 1; // slot j left unwritten
+        else { out[j] = c; capFlag = false; }
+        break;
+      default: out[j] = c; capFlag = false;
+    }
+    const p = out[oldJ - 3];
+    if (capFlag && (p === 46 || p === 63 || p === 33)) { // . ? !
+      // FIX #5: only a lowercase letter is capitalised (DOS subtracted 32 from anything)
+      if (out[oldJ] >= 97 && out[oldJ] <= 122) out[oldJ] -= 32;
+    }
+    j++;
+  }
+  for (let k = 0; k < out.length; k++) if (out[k] === undefined) out[k] = 0;
+  const at = k => { if (k >= out.length) throw new Error(`story ${storyNum}: unexpected end of text`); return out[k]; };
+
+  // K/L parameters between the 1st and 2nd '\'
+  const parmOps = [];
+  j = lastChar;
+  do {
+    j++;
+    const op = at(j);
+    if (op === 75 || op === 76) { // 'K' | 'L'
+      j++;
+      let value = at(j) - 48;
+      if (value < 0 || value > 9) errors.push({ id: 4, param: value });
+      const t = at(j + 1);
+      if (t >= 48 && t <= 57) { value = 10 * value + t - 48; j++; }
+      // FIX #3: DOS re-tested StoryOut[j] (now the last digit) so K/L never fired
+      parmOps.push({ op: op === 75 ? 'K' : 'L', n: value });
+    }
+  } while (at(j) !== BSL);
+  lastChar = j + 1;
+  const text = String.fromCharCode(...out.slice(0, lastChar));
+
+  const options = [];
+  j = lastChar + 1;
+  for (let i = 1; i <= 4; i++) {
+    let title = '';
+    do { title += String.fromCharCode(at(j)); j++; } while (at(j) !== CR);
+    let command = '';
+    j += 2;
+    do { j++; command += String.fromCharCode(at(j)); } while (at(j) !== BSL);
+    j += 2;
+    options.push({ title, command });
+  }
+
+  let faceWho = who;
+  if (CHRIS_FACE.includes(storyNum)) faceWho = 8;
+  if (NO_FACE.includes(storyNum)) faceWho = 0;
+  return { text, faceWho, options, parmOps, errors };
+}
+
+/** Applies K/L parameter ops to StoryParm (only reachable with FIX #3). */
+export function applyParmOps(s, ops) {
+  for (const { op, n } of ops) s.storyParm[n] = op === 'K' ? Math.abs(s.storyParm[n]) : -Math.abs(s.storyParm[n]);
+}
+
+// ------------------------------------------------------------------ 3. interpreter
+const i16 = v => (v << 16) >> 16; // TP Integer arithmetic wraps
+
+/**
+ * ExecComd: runs an option's command string for (who, storyNum), mutating s.
+ * Returns {result: string|null (text after 'P' up to the CR), errors: [{id, param}], terminated}.
+ */
+export function execComd(s, command, who, storyNum, dosCompat = false) {
+  const P = s.player;
+  const errors = [];
+  // DOS: x,y,z,t and Register are uninitialised stack words -> 0
+  let x = 0, y = 0, z = 0, t = 0, register = 0, value = 0, result = null, term = false;
+  const ch = k => (k >= 1 && k <= command.length ? command.charCodeAt(k - 1) : 0);
+  const push = n => { t = z; z = y; y = x; x = n; };
+  const pop = () => { x = y; y = z; z = t; };
+  let i = 1;
+  const readNum = () => {
+    i++;
+    value = ch(i) - 48;
+    if (value < 0 || value > 9) errors.push({ id: 4, param: value });
+    const n = ch(i + 1);
+    if (n >= 48 && n <= 57) { value = 10 * value + n - 48; i++; }
+  };
+  const skipToCR = () => { do i++; while (i < OPTN_MAX && ch(i) !== CR); };
+  while (i < OPTN_MAX && !term) {
+    const c = String.fromCharCode(ch(i));
+    switch (c) {
+      case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
+        i--; readNum(); push(value); break;
+      case 'A': push(s.love[who][P]); break;
+      case 'D': push(i16(-s.fear[who][P])); break;
+      case 'T': push(s.trust[who][P]); break;
+      case 'E': push(s.temper[who]); break;
+      case 'G': push(s.gullble[who]); break;
+      case 'I': push(s.pride[who]); break;
+      case 'N': case 'W': push(0); break;
+      case 'a': s.love[who][P] = x; pop(); break; // no clamping (as DOS)
+      case 'd': s.fear[who][P] = i16(-x); pop(); break;
+      case 't': s.trust[who][P] = x; pop(); break;
+      case '+': y = i16(x + y); pop(); break;
+      case '-': y = i16(y - x); pop(); break;
+      case '*': y = i16(Math.imul(y, x)); pop(); break;
+      case '/':
+        if (x === 0) throw new Error(`story ${storyNum}: division by zero (DOS runtime error 200)`);
+        y = i16(div(y, x)); pop(); break;
+      case 'X': [x, y] = [y, x]; break;
+      case 'R': { const tmp = x; pop(); t = tmp; break; }
+      case 'M': push(register); break;
+      case 'm': register = x; break;
+      case 'B': if (x >= 0) { skipToCR(); i += 2; } break;
+      case 'S': skipToCR(); break;
+      case 'P': {
+        const start = i + 1;
+        let e = start;
+        while (e < OPTN_MAX && ch(e) !== CR) e++;
+        result = command.slice(start - 1, e - 1);
+        i = e;
+        do i++; while (i < OPTN_MAX && ch(i) !== BSL);
+        i--;
+        break;
+      }
+      case 'F': readNum(); break;
+      case 'C':
+        readNum();
+        for (let j = 1; j <= s.numChars; j++) { // includes the player
+          s.love[j][P] = Math.max(-127, s.love[j][P] - value);
+          s.trust[j][P] = Math.max(-127, s.trust[j][P] - value);
+          s.fear[j][P] = Math.max(-127, s.fear[j][P] - value);
+        }
+        break;
+      case 'H': {
+        s.aslyn = i16(s.aslyn + x);
+        // FIX #4: used stories (-1) stay used; DOS Abs() turned them into 1 (= enabled for character 1)
+        const set = j => { if (dosCompat || s.storyParm[j] !== -1) s.storyParm[j] = s.aslyn < 8 ? Math.abs(s.storyParm[j]) : -Math.abs(s.storyParm[j]); };
+        if (storyNum < 23) for (let j = storyNum + 1; j <= 23; j++) set(j);
+        if (storyNum === 23 && s.aslyn < 8 && (dosCompat || s.storyParm[44] !== -1)) s.storyParm[44] = Math.abs(s.storyParm[44]);
+        break;
+      }
+      case 'J': x = i16(-x); break;
+      case 'Q':
+        for (let j = 1; j <= s.numChars; j++) for (let k = 1; k <= 3; k++) s.auraCnt[k][j][P] = s.auraCnt[k][j][0];
+        break;
+      case '\\': term = true; break;
+      default: errors.push({ id: 6, param: 0 });
+    }
+    i++;
+  }
+  if (!term) errors.push({ id: 3, param: 0 }); // param = OptSelect, filled in by the caller
+  return { result, errors, terminated: term };
+}
+
+// ------------------------------------------------------------------ 4. story screen (DOS layout)
+
+/** Splits the P result text into lines of <=39 chars as DOS ExecComd did (each drawn padded to 63). */
+export function wrapResult(text) {
+  const c = text + '\r';
+  const lines = [];
+  let i = 0;
+  do {
+    const line = [];
+    let j = 0;
+    do { line[j] = c[i]; j++; i++; } while (!(j === 39 || c[i] === '\r'));
+    if (c[i] !== '\r') {
+      do { i--; j--; line[j] = ' '; } while (!(c[i] === ' ' || i <= 0));
+      while (c[i] === ' ') i++; // FIX #6: DOS started the continuation line AT the blank
+    }
+    lines.push(line.join('').padEnd(63));
+  } while (c[i] !== '\r');
+  return lines;
+}
+
+/** One DrawStory page from text[startI]: 14 lines, each text[StartI..EndI] with EndI = last blank before
+ *  StartI+50, drawn padded to 70. Returns {lines, next (StartI of the next page), last (EndFlag)}. */
+export function storyPage(text, startI) {
+  const lines = [];
+  let last = false;
+  for (let lineNum = 1; lineNum < 15 && !last; lineNum++) {
+    let endI = startI + 50;
+    if (endI >= text.length) { last = true; endI = text.length; }
+    do endI--; while (text[endI] !== ' ' && endI > startI);
+    lines.push(text.slice(startI, endI + 1).padEnd(70));
+    startI = endI + 1;
+  }
+  return { lines, next: startI, last };
+}
+
+const DONE = rect(10, 194, 50, 224), PREV = rect(60, 194, 100, 224), NEXT = rect(110, 194, 150, 224);
+const optRect = (i, right = 512) => rect(0, 210 + 30 * i, right, 230 + 30 * i);
+
+async function randError(ui, id, param, command) {
+  const qd = ui.qd, r = rect(80, 240, 400, 300);
+  qd.fillRect(r, Pat.white); qd.frameRect(r);
+  qd.moveTo(84, 260); qd.drawString(`Report Random Event Error #${id} Class:0`);
+  qd.moveTo(84, 276);
+  qd.drawString({ 1: 'Cannot find Story', 2: 'Cannot read Story', 3: 'Unterminated Command',
+    4: 'F-comd has bad operand', 5: 'final X-Value:', 6: 'Bad string: ' + command.slice(0, 30) }[id]);
+  qd.drawString(String(param));
+  qd.moveTo(84, 292); qd.drawString('Press Mouse to continue.');
+  await ui.input.waitButton();
+}
+
+/** RandEvent(Context, Who): maybe shows a story for character `who` in `context` (1..6). */
+export async function randEvent(g, context, who) {
+  const s = g.s, ui = g.ui, qd = ui.qd;
+  if (who > s.numChars) return;
+  const storyNum = selectStory(s, context, who, () => g.random());
+  if (storyNum <= 0 || storyNum >= 45) return;
+
+  const story = parseStory(ui.storyFile(storyNum), storyNum, who, g);
+  s.storyParm[storyNum] = -1;
+  if (!g.dosCompat) applyParmOps(s, story.parmOps); // FIX #3 (dosCompat: K/L never fire, as in DOS)
+
+  const saved = ui.saveScreen();
+  qd.clearRect(0, 0, 639, 479);
+  const drawDone = () => { qd.frameRect(DONE); qd.moveTo(15, 212); qd.drawString('Done'); };
+  const drawPrev = () => { qd.frameRect(PREV); qd.moveTo(66, 207); qd.drawString('Prev'); qd.moveTo(65, 218); qd.drawString('Page'); };
+  const drawNext = () => { qd.frameRect(NEXT); qd.moveTo(115, 207); qd.drawString('Next'); qd.moveTo(115, 218); qd.drawString('Page'); };
+  drawDone(); drawPrev(); drawNext();
+  if (story.faceWho > 0) ui.drawFace(story.faceWho, 6, 28);
+  for (const e of story.errors) await randError(ui, e.id, e.param, '');
+
+  let startI = 0, ssIndex = 1, endFlag = false, startFlag = true;
+  const saveStart = [];
+  const drawStory = () => {
+    qd.clearRect(170, 10, 639, 235);
+    saveStart[ssIndex] = startI;
+    const pg = storyPage(story.text, startI);
+    pg.lines.forEach((line, n) => { qd.moveTo(170, 20 + 15 * (n + 1)); qd.drawString(line); });
+    startI = pg.next; endFlag = pg.last;
+    startFlag = ssIndex === 1;
+  };
+  drawStory();
+  if (startFlag) qd.fillRect(PREV, Pat.white);
+  if (endFlag) qd.fillRect(NEXT, Pat.white);
+
+  story.options.forEach((o, n) => { qd.moveTo(15, 225 + 30 * (n + 1)); qd.drawString(o.title); });
+  let optSelect = 1;
+  qd.invertRect(optRect(optSelect));
+
+  const doExec = async () => {
+    const cmd = story.options[optSelect - 1].command;
+    const r = execComd(s, cmd, who, storyNum, g.dosCompat);
+    for (const e of r.errors) await randError(ui, e.id, e.id === 3 ? optSelect : e.param, cmd);
+    if (r.result !== null) {
+      qd.clearRect(170, 20, 612, 234);
+      qd.fillRect(PREV, Pat.white); qd.fillRect(NEXT, Pat.white); qd.fillRect(DONE, Pat.white);
+      qd.frameRect(DONE); qd.moveTo(DONE.left + 12, DONE.top + 20); qd.drawString('OK');
+      for (let j = 1; j <= 4; j++) if (j !== optSelect) qd.fillRect(optRect(j, 600), Pat.white);
+      wrapResult(r.result).forEach((line, n) => { qd.moveTo(172, 30 + (n + 1) * 20); qd.drawString(line); });
+    }
+    await ui.input.waitRelease();
+    for (;;) {
+      const e = await ui.input.nextEvent();
+      if (e.type === 'mousedown' && qd.ptInRect(e, DONE) && await ui.rectHit(DONE)) return;
+    }
+  };
+
+  let myFlag = false;
+  while (!myFlag) {
+    const e = await ui.input.nextEvent();
+    if (e.type !== 'mousedown') continue;
+    const pt = { x: e.x, y: e.y };
+    if (qd.ptInRect(pt, DONE) && await ui.rectHit(DONE)) { await doExec(); myFlag = true; }
+    if (qd.ptInRect(pt, NEXT) && !endFlag && await ui.rectHit(NEXT)) {
+      ssIndex++; drawStory(); drawPrev();
+      if (endFlag) qd.fillRect(NEXT, Pat.white);
+    }
+    if (qd.ptInRect(pt, PREV) && !startFlag && await ui.rectHit(PREV)) {
+      ssIndex--; startI = saveStart[ssIndex]; endFlag = false; drawStory(); drawNext();
+      if (startFlag) qd.fillRect(PREV, Pat.white);
+    }
+    for (let i = 1; i <= 4; i++) if (i !== optSelect && qd.ptInRect(pt, optRect(i)) && await ui.rectHit(optRect(i))) {
+      qd.invertRect(optRect(optSelect)); optSelect = i; qd.invertRect(optRect(optSelect));
+    }
+  }
+  ui.restorePalette();
+  ui.restoreScreen(saved);
+}

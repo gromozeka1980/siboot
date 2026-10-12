@@ -1,0 +1,35 @@
+{
+ "text": "\tSince you're in the neighborhood, you decide to stop by Feslym's house to pay your respects to his widow;  it is a gesture of respect for the Shepherdship and a way of showing your concern for her welfare.  Kira is a tightly-knit community and the tradition of looking after widows and widowers dates back to the earliest days of the colony.  You step onto the porch and open the outer door; to your surprise, {name} opens the inner door, heading outward, at exactly the same moment.  The two of you stare at each other for a second; one must yield the way to the other.  What do you do? ",
+ "options": [
+  {
+   "title": "Wait for and go along with whatever action {name} takes.",
+   "results": [
+    "{name} smiles and steps aside for you.",
+    "{name}barges past you without saying a word."
+   ]
+  },
+  {
+   "title": "Demand that {name} step aside.",
+   "results": [
+    "{name} steps aside without argument.",
+    "{name} refuses to acknowledge your demand and brushes past you.",
+    "{name} tells you to go to hell and pushes you aside."
+   ]
+  },
+  {
+   "title": "Step aside, hold the door open, and say, \"After you, {name}!\"",
+   "results": [
+    "{name} smiles sweetly and thanks you.",
+    "{name} sneers triumphantly and barges past you."
+   ]
+  },
+  {
+   "title": "Barge past {name}, pushing {him} aside.",
+   "results": [
+    "{name} meekly steps aside.",
+    "{name} glares at you and stands {his} ground.",
+    "{name} shoves right back and stares you down."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+window 182,172,458,309
+
+id=2
+kind=fldbutton
+exit=true
+title="Quit"
+area=41,88,108,108
+
+id=3
+kind=fldbutton
+exit=true
+title="Cancel"
+area=151,88,221,108
+
+id=4
+kind=fldend
+
+id=5
+kind=fldtext
+Area=4,29,272,37
+title="Are you sure you want to"
+
+
+id=6
+kind=fldtext
+title="quit this truly transcendental"
+area=4,43,272,51
+
+id=7
+kind=fldtext
+title="interactive experience?"
+area=4,56,272,64
+
+

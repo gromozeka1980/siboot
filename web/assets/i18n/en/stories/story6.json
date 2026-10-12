@@ -1,0 +1,29 @@
+{
+ "text": "You are still several hundred meters from your destination when you perceive {name} approaching from another direction.  Even from this great distance you instantly see that {he} is upset.  {he} hesitates, stops, then retreats to some nearby barrels and disappears among them.  Curious, you approach carefully.  Then you see {him}, sitting on the ground between two barrels, {his} head buried in {his} hands.  \"{name}?\", you ask.  \"What is wrong?\"\r     {name} looks up, obviously embarassed at being caught in a moment of weakness.  {he} hesitates for a moment, gauging your sympathy, then explains.  \"I have to tell you, this entire process of selecting the Shepherd is starting to get to me.  It's not the effort, or the mental combat; after all these years of preparation, I'm ready for that.  What bothers me is the way it is affecting my attitude toward the other acolytes.  I've lived and worked with these people all my life.  I was brought up to try to believe that I could love people from other species.  But now I find myself engaged in fierce competition with these same people whom I'm supposed to love.  I betray them, and they betray me.  It seems like the worst possible way to find out who is pure and virtuous enough to be the next Shepherd.  I'm not sure I want to go through with it, but it's not even my own decision; all those people back on Lamina are counting on me to fight hard for them.  I don't know what to do.\"\r     What do you tell {him}? ",
+ "options": [
+  {
+   "title": "\"I don't know what to tell you.\"",
+   "results": [
+    "{name} thanks you and walks off."
+   ]
+  },
+  {
+   "title": "\"I have the same feelings sometimes, but we have to carry on.\"",
+   "results": [
+    "{name} thanks you and walks off."
+   ]
+  },
+  {
+   "title": "\"Why don't you drop out and give me your auras?\"",
+   "results": [
+    "{name} becomes furious, screams at you, and runs away."
+   ]
+  },
+  {
+   "title": "\"We'll all be good friends again when this is over.  Don't worry about it!\"",
+   "results": [
+    "{name} says {he} feels better and heads off."
+   ]
+  }
+ ]
+}

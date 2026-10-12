@@ -1,0 +1,33 @@
+{
+ "text": "As you pass by the perishables warehouse, you hear an odd noise emanating from within.  Now alert, you can sense eeyal-talk going on inside, and you can immediately tell from the sophistication of the conversation that the speakers must be acolytes.  You quietly enter the warehouse and creep about.  You catch sight of them down a narrow corridor.  It is {name} and another person whom youÊcan't see, engaged in an animated conversation.  You can't pick out their facial expressions or gestures, so the eeyal you're picking up doesn't make much sense.  When you hear your name mentioned, you decide that you must find out what they're saying, so you start to creep even closer.  You climb on top of some crates and try to crawl over the top, but one crate is weak and breaks underneath you.  You, the crate, and some assorted vegetables land together in a heap.  You jump up just as {name} arrives.  The other person has run away; you still don't know who it was.  {name} demands to know what you were doing sneaking around spying on {him}.  YouÊreply: ",
+ "options": [
+  {
+   "title": "\"Er, sorry, I was just investigating a noise.  I'll be going now.\"",
+   "results": [
+    "{name} shakes {his} head skeptically and lets you go."
+   ]
+  },
+  {
+   "title": "\"I know you were talking about me.  What were you plotting?\"",
+   "results": [
+    "{name} grows furious, shouts at you, and stalks off.",
+    "{name} laughs and says, \"You fool, we weren't plotting anything!\"",
+    "{name} says, \"Oh, dear, we weren't plotting anything!\""
+   ]
+  },
+  {
+   "title": "\"I'm sorry.  I couldn't help but overhear my name, and I was curious.\"",
+   "results": [
+    "{name} looks unconvinced.  \"Sure\", {he} says, and {he} walks away.",
+    "{name} yells, \"Get out of here!\""
+   ]
+  },
+  {
+   "title": "\"How dare you use that tone of voice with me!\"",
+   "results": [
+    "{name} looks chastised and retreats without saying a word.",
+    "{name} shouts at you angrily and stalks off."
+   ]
+  }
+ ]
+}

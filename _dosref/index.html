@@ -1,0 +1,10 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+<script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+<style>html,body{margin:0;height:100%;background:#000}#dos{width:100%;height:100%}</style>
+</head><body><div id="dos"></div>
+<script>window.ci=null;Dos(document.getElementById("dos"),{url:"siboot.jsdos",autoStart:true,kiosk:true,onEvent:(e,ci)=>{if(e==="ci-ready")window.ci=ci;}});</script>
+</body></html>
+<script>
+async function shot(name){const d=await ci.screenshot();const c=document.createElement('canvas');c.width=d.width;c.height=d.height;c.getContext('2d').putImageData(d,0,0);const b=await new Promise(r=>c.toBlob(r,'image/png'));await fetch('/'+name+'.png',{method:'POST',body:b});return name;}
+</script>

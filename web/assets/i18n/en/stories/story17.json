@@ -1,0 +1,29 @@
+{
+ "text": "Suddenly the door flies open.  In charges Chris Crawford.  \"No, no, no!  That's not the way I intended you to play this game at all!  You've got to mix it up more intensely with the characters!  You, {name}, I taught you better than that!  Come on, now, show some FEELING!  And you, player, what do you think you're doing anyway?  Just kinda messing around in a half-witted way?  You're acting like this is some sorta game or something!  You clod!  Don't you realize that this is ART?\"  He pauses, glaring at the two of you.  You both look down at the floor; {name} scrapes the floor with {his} foot.  \"All right, people!  One more time, with FEELING!\"  He stalks out, slamming the door behind him.  So, are you going to be good? ",
+ "options": [
+  {
+   "title": "Yes, I promise to be good and play well.",
+   "results": [
+    "Thank you."
+   ]
+  },
+  {
+   "title": "What's going on here?",
+   "results": [
+    "That depends on what you want to be going on here."
+   ]
+  },
+  {
+   "title": "This guy is really screwy.",
+   "results": [
+    "You think I'm screwy?  I've got your money!"
+   ]
+  },
+  {
+   "title": "Go to hell, Crawford!",
+   "results": [
+    "A cloud passes over the sun.  The earth shudders."
+   ]
+  }
+ ]
+}

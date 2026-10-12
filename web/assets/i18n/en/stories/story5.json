@@ -1,0 +1,33 @@
+{
+ "text": "You're starting to feel the pangs of hunger, and, as you are not far from the cafeteria, you decide to drop by there for a meal.  It's not very crowded and you have little difficulty getting some food, although the stuff is, as usual, not very good.  You would think that after more than a century of trying, they would have figured out how to cook food for different species and get it right, but somehow the cooks of one species never seem to be able to do a decent job with food for other species.  The compromise that was worked out many years ago required at least one cook of each species on duty at all times. This should have solved the problem, but in practice the divisions of labor almost always required some cross-species cooking.  You choose some buttered vegetables because that is a dish that almost everybody likes and so is probably prepared well (you hope).  The rolls look pretty good today, so you have one of those, too.\r\tWith your food on your tray, you set out to look for a table.  There are actually plenty of choices, but you would like to find someplace quiet to be alone with your thoughts, the better to mull over the day's activities as you eat.  You head for a recessed corner of cafeteria whose remoteness normally guarantees solitude.  But as you turn the corner, you behold {name} sitting at a table facing you, having just sat down to eat {his} meal.  Apparently {he} had exactly the same notion you had.  Now you're in a sticky situation: what are you going to do?  {name} has already made eye contact with you, so you can't just sneak away. ",
+ "options": [
+  {
+   "title": "Look downward and walk back into the main cafeteria.",
+   "results": [
+    "You eat alone in the main cafeteria."
+   ]
+  },
+  {
+   "title": "Ask if you may join {name}.",
+   "results": [
+    "{name} smiles and says, \"Of course, please join me!\"",
+    "{name} looks at you nonchalantly and says, \"If you wish.\"",
+    "{name} scowls at you and says, \"No, I would rather be alone.\""
+   ]
+  },
+  {
+   "title": "Move to sit at another table in the room.",
+   "results": [
+    "{name} asks you to sit with {him}.",
+    "The two of you eat in separate and strained silence."
+   ]
+  },
+  {
+   "title": "Sit down at {name}'s table and initiate a pleasant conversation.",
+   "results": [
+    "{name} seems pleased and talks readily.",
+    "{name} is angry and moves to another table."
+   ]
+  }
+ ]
+}

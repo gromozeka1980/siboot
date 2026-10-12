@@ -1,0 +1,29 @@
+{
+ "text": "\tThe conversation with {name} has been going on for some time when {he} turns away from you for a moment and you suddenly realize that {his} tunic has entangled itself behind {him}, hoisting itself up and exposing a goodly amount of what should be private skin.  You stare in some curiosity for a second; after all, the private parts of {species}s are not something that you see every day.  {he} starts to turn back to face you,Êand youÊimpulsively: ",
+ "options": [
+  {
+   "title": "glance downward and decide not to mention it.",
+   "results": [
+    "{name} notices and straightens out the tunic. "
+   ]
+  },
+  {
+   "title": "burst out laughing at {him}.",
+   "results": [
+    "{name} reddens in embarrasment and anger."
+   ]
+  },
+  {
+   "title": "say, \"Um, {name}, you should straighten your tunic, it's out of order.\"",
+   "results": [
+    "{name} hurriedly rectifies the error."
+   ]
+  },
+  {
+   "title": "step up, stumble into {him}, and secretly straighten {his} tunic in the scuffle.",
+   "results": [
+    "{name} calls you a clumsy oaf."
+   ]
+  }
+ ]
+}

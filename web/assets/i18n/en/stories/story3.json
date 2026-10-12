@@ -1,0 +1,33 @@
+{
+ "text": "While waiting, your eye happens to fall upon a Carimbi beetle making its way across the footpath.  These hardy little fellows somehow stowed away aboard one of the early shuttles from Lamina and made a home on Kira.  They were despised by the early colonists as pests, but after the war that attitude changed.  They came to be viewed as fellow survivors, compatriots in the lonely and lifeless world of Kira.  Besides, they really didn't do much harm, spending most of their lives burrowing underground, gathering bits and pieces of organic flotsam left over from the agricultural operations.  Somebody had done an analysis of their net environmental impact and decided that they probably did more good than harm.  Ever since, Kirans have held the Carimbi beetle with bemusement.  This particular one is quite pretty; his green iridescent wings gleam brightly in the sun.  You bend over and poke at him, muttering, \"Hello there, beetle!\"  He scurries about randomly, seeming only dimly aware of your existence.  This you did not expect.  You would have preferred him to dash madly about in wild fear of you, even though you certainly mean him no harm.  You chase him into a hollow in the sand and block his exit with a small stick.  He wanders about in the hollow, again only vaguely aware of your actions.  He starts to climb over the lip and you place your foot down to discourage his escape;  he climbs onto your foot and wanders around there.  \"All right, you, this has gone far enough!  Off you go!  You go somewhere and ---\"  Your orders are interrupted by a rustling sound behind you.  It is {name}, just emerging from the house.  {he} looks at you with an air of extreme suspicion.  You straighten up, still holding the stick you were using to chase the beetle.  You fumble for a moment, trying to think of what to say.  It is quite obvious that {name} has not seen the beetle, has no idea what you are up to, and suspects some crazy scheme.  What do you say to {him}? ",
+ "options": [
+  {
+   "title": "\"Oh, excuse me!\"  Then smile and get out of there fast.",
+   "results": [
+    "{name} is obviously unimpressed but does nothing.",
+    "{name} watches you go with a bemused smile."
+   ]
+  },
+  {
+   "title": "\"There's this beetle here that I was talking to...\"",
+   "results": [
+    "{name} is not about to believe you.",
+    "{name} just laughs and continues on {his} way."
+   ]
+  },
+  {
+   "title": "\"What are you doing sneaking up on me?\"",
+   "results": [
+    "{name} looks chastened and hurries off.",
+    "{name} straightens up and stares at you coldly before telling you that you can go in now."
+   ]
+  },
+  {
+   "title": "\"When was the last time you saw a Carimbi beetle this pretty?\"",
+   "results": [
+    "{name} looks at you and then walks off, muttering, 'a beetle!'",
+    "{name} laughs and bends low to look at the beetle."
+   ]
+  }
+ ]
+}

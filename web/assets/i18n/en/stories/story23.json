@@ -1,0 +1,29 @@
+{
+ "text": "You suddenly notice an odd shape in the window.  {name} is still talking, but your eyes rivet onto the dark lump outlined in the window.  It's hard to see at first, the light outside is so bright, but after you stare long enough you recognize it:  Aslyn!  That little rat!  He followed you here and has been eavesdropping on your conversation with {name}!  Noticing your distraction, {name} turns around and sees Aslyn immediately.  Turning back to you, {name}'s face reveals a barely-concealed suspicion.  Everybody associates you with Aslyn, thinking him to be your student.  There's some faint truth in that, yet you resent the implications of {name}'s stare.  Now you simply MUST do something to put an end to this, at the very least to restore {name}'s confidence in you.  So what do you say to Aslyn? ",
+ "options": [
+  {
+   "title": "\"Aslyn, please go home now!\"",
+   "results": [
+    "His face disappears.  You hope he has really gone."
+   ]
+  },
+  {
+   "title": "\"Aslyn, it is wrong to eavesdrop.  Now go home!\"",
+   "results": [
+    "He goes away wordlessly."
+   ]
+  },
+  {
+   "title": "\"Aslyn, get out of here right now!\"",
+   "results": [
+    "He runs away."
+   ]
+  },
+  {
+   "title": "\"Aslyn, you creep, quit following me!\"",
+   "results": [
+    "Aslyn goes away."
+   ]
+  }
+ ]
+}

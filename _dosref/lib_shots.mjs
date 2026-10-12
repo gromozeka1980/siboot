@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const b = await chromium.launch(), p = await (await b.newContext({ viewport: { width: 1280, height: 860 } })).newPage();
+p.on('pageerror', e => console.log('PAGE ERROR', e.message));
+await p.goto('http://localhost:8766/?lang=ru'); await p.waitForFunction(() => window.__dbg, null, { timeout: 60000 }); await sleep(1500);
+await p.keyboard.press('F1'); await sleep(800); await p.screenshot({ path: 'shots_ru/lib_shelf.png' });
+await p.click('[data-open="story"]'); await sleep(500); await p.click('[data-ch="2"]'); await sleep(500); await p.screenshot({ path: 'shots_ru/lib_novel.png' });
+await p.click('[data-shelf]'); await sleep(300); await p.click('[data-open="rules"]'); await sleep(300);
+const n = await p.$$eval('.lib-toc a', a => a.length); await p.click(`[data-ch="${n - 2}"]`); await sleep(800); await p.screenshot({ path: 'shots_ru/lib_dict.png' });
+console.log(await p.$eval('.lib-toc', e => e.innerText.slice(0, 400)));
+await b.close();
