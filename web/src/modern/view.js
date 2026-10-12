@@ -83,17 +83,14 @@ export class ModernView {
   logSentence(who, S, extra = '') {
     const P = this.s.player, words = sentenceWords(S);
     if (!words.length || !S[VerbA] || S[VerbA] === W.Pause) return; // Pause = the engine's "thinking" placeholder
-    // a player's beg/threat is a bare verb that pleads for his previous offer or question: retell it with those details
-    if ([W.Reveal, W.Ask].includes(S[VerbA])) (this.lastPlea ||= {})[who] = S.slice();
-    const prev = this.lastPlea?.[who];
-    const told = [W.Beg, W.Threat].includes(S[VerbA]) && !S[4] && prev
-      ? prev.map((x, i) => (i === VerbA ? S[VerbA] : x)).map((x, i) => (prev[VerbA] === W.Ask && i === 4 ? W.That : x)) : S;
-    const bare = [W.Beg, W.Threat].includes(S[VerbA]) && !S[4] && !prev; // nothing to plead for: just the gesture
+    const told = S;
+    const bare = [W.Beg, W.Threat].includes(S[VerbA]) && !S[4]; // nothing to plead for: just the gesture
     const text = bare ? T(S[VerbA] === W.Beg ? 'begBare' : 'threatBare', S[VerbA] === W.Beg ? '{S} pleads with {O} to reconsider.' : '{S} angrily demands that {O} reconsider.')
       .replace('{S}', this.name(who)).replace('{O}', this.name(this.s.interloc[who], S[VerbA] === W.Beg ? 'acc' : 'nom')) : gloss(told, this.g);
     sound.voice(who, words.length);
     this.journal.push({ day: this.s.day, time: this.s.time, who, words, text, kind: S[VerbA] }); // the day log (Journal)
     if (this.journal.length > 600) this.journal.splice(0, this.journal.length - 600);
+    this.lastKey = who + ':' + words.join(',');
     this.logHTML(`<div class="line ${who === P ? 'me' : ''}"><img class="av" src="${portrait(who)}" alt="">
       <div class="bubble"><div class="glyphs">${words.map(icon).join('')}</div><div class="say">${esc(text)}</div>${extra}</div></div>`);
   }
@@ -123,6 +120,11 @@ export class ModernView {
   clearCommand() { this.logSentence(this.s.player, this.s.sentence[this.s.player]); }
   async heard(who, msg) { sound.play('heard'); this.logSentence(who, this.s.sentence[who]); await sleep(350); }
   showHeard(who, when) {
+    const key = who + ':' + sentenceWords(this.s.sentence[who]).join(','), last = this.el('log')?.lastElementChild;
+    if (this.lastKey === key && last?.classList.contains('line')) { // heard() already showed it: just add the date
+      if (when) last.querySelector('.bubble').insertAdjacentHTML('beforeend', `<div class="when">${T('reported', 'event of day')} ${when.date}, ${hhmm(when.time)}</div>`);
+      return;
+    }
     this.logSentence(who, this.s.sentence[who], when ? `<div class="when">${T('reported', 'event of day')} ${when.date}, ${hhmm(when.time)}</div>` : '');
   }
   deal(who) {
@@ -154,7 +156,7 @@ export class ModernView {
     const file = [`stories/s${story.num}_${story.who}.webp`, `stories/s${story.num}.webp`].find(f => REMAKE.has(f));
     const art = file ? `<img class="story-art" src="assets/remake/${file}" alt="">` : '';
     const face = story.faceWho > 0 && !art ? `<img src="${portrait(story.faceWho)}" alt="">` : ''; // the illustration already shows who is there
-    const body = story.text.split(' ')[0]; // the story ends at its first ''; story 30 then has K/L parameter codes (DOS showed them)
+    const body = story.text.split('\0')[0]; // the story ends at its first backslash; story 30 then has K/L parameter codes (DOS showed them)
     const m = this.modal(`${art}<div class="story${face ? '' : ' noface'}">${face}<div><div class="text">${para(body)}</div>
       <div class="choices">${story.options.map((o, i) => `<button data-i="${i + 1}">${esc(o.title)}</button>`).join('')}</div></div></div>`);
     const pick = await new Promise(res => m.addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) res(Number(b.dataset.i)); }));

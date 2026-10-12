@@ -232,6 +232,9 @@ export class Game {
   async execSntc(who) {
     const s = this.s, view = this.view, P = s.player;
     let result = true;
+    // a beg/threat repeats the speaker's previous sentence with the new verb. The original did this inside PlotSntc
+    // (drawing!), so a view that draws differently must not lose it: the listener judges the plea by these slots.
+    { const S = s.sentence[who]; if (S[VerbA] === W.Beg || S[VerbA] === W.Threat) for (let i = 3; i <= SNTC_LENG; i++) S[i] = s.lastSntc[who][i]; }
     if (who === P) view.clearCommand();
     const M = s.sentence[who].slice();
     const [, MSubjA, MVerbA, MObjA1, MObjA2, MSubjB, MVerbB, MObjB1, MObjB2] = M;
