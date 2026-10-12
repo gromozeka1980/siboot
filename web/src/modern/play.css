@@ -292,3 +292,77 @@ body.no-advisor #advise { display: none; }
 @media (max-width: 760px) and (min-height: 521px) {
   .tip { top: 6px; bottom: auto; left: 8px; right: 8px; border-radius: 14px; padding: 10px 12px; } .tip p { font-size: 13px; margin: 4px 0 8px; }
 }
+
+/* toolbar and action buttons: words on desktops, symbols on phones */
+.hbtn svg, .btn > i { display: none; }
+.btn > i { font-style: normal; }
+
+/* ===== portrait phones: a game screen, not a page =====
+   fixed full-screen grid (no page scroll): HUD / scene / conversation / action panel; the aura table and all
+   dialogs slide up from the bottom; no browser chrome feel (no tap flashes, text selection, bounce, double-tap zoom) */
+@media (max-width: 760px) and (min-height: 521px) {
+  html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+  body { -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; touch-action: manipulation;
+    -webkit-touch-callout: none; background: var(--bg); }
+  .app { height: 100dvh; padding: 0; gap: 0; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; }
+  .app > main { order: 0; grid-row: 2; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 0; min-height: 0; }
+  .app > footer { order: 0; grid-row: 3; position: static; }
+  /* HUD */
+  .app > header { order: 0; grid-row: 1; height: calc(46px + env(safe-area-inset-top)); padding: env(safe-area-inset-top) 6px 0 12px;
+    gap: 2px; flex-wrap: nowrap; justify-content: flex-start; background: rgba(11,10,20,.92); border-bottom: 1px solid var(--line); z-index: 4; }
+  .app > header .clock { display: flex; margin-right: auto; font-size: 13px; gap: 4px; white-space: nowrap; }
+  .tag-clock { display: none; }
+  .hbtn { flex: none; width: 44px; height: 44px; padding: 0; display: grid; place-items: center; border: 0; background: none; border-radius: 12px; color: var(--ink); }
+  .hbtn:active { background: rgba(255,255,255,.08); }
+  .hbtn svg { display: block; width: 25px; height: 25px; } .hbtn span { display: none; }
+  /* scene: a full-bleed strip with the speaker */
+  .scene { border: 0; border-radius: 0; min-height: 0; padding: 26px 12px 10px; gap: 12px; }
+  .scene .tag { top: 7px; left: 12px; font-size: 10.5px; }
+  .portrait { width: 84px; height: 84px; border-radius: 12px; }
+  .who h2 { font-size: 24px; } .who .sp { margin: 2px 0 6px; font-size: 12px; }
+  .meters { grid-template-columns: 54px minmax(60px, 1fr) 28px; gap: 3px 8px; font-size: 11.5px; }
+  .alone { font-size: 18px; }
+  /* conversation fills the middle */
+  .log.card { border: 0; border-radius: 0; background: none; padding: 10px 10px 14px; max-height: none; }
+  .bubble { max-width: 86%; padding: 7px 10px; } .say { font-size: 16px; } .line .av { width: 30px; height: 30px; }
+  /* action panel, thumb-reachable */
+  .app > footer.card { border: 0; border-radius: 18px 18px 0 0; padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    background: var(--panel); box-shadow: 0 -12px 30px rgba(0,0,0,.45); }
+  .builder { gap: 6px; }
+  .slots { gap: 4px; flex-wrap: nowrap; overflow-x: auto; } .slot { width: 34px; height: 34px; flex: none; } .slot .ic { --s: 30px; }
+  .preview { font-size: 14px; margin: 4px 0 6px; min-height: 18px; line-height: 1.25; }
+  .palette { gap: 6px; padding-bottom: 2px; scrollbar-width: none; } .palette::-webkit-scrollbar { display: none; }
+  .chip { width: 66px; padding: 6px 2px; font-size: 10.5px; border-radius: 12px; } .chip .ic { --s: 34px; }
+  .chip:active { border-color: var(--gold); background: #3a2f1c; }
+  .actions { display: flex; flex-direction: row; gap: 6px; min-width: 0; margin-top: 2px; }
+  .actions .btn { flex: 0 0 48px; height: 46px; padding: 0; display: grid; place-items: center; font-size: 19px; border-radius: 14px; }
+  .actions .btn > i { display: inline; } .actions .btn > span { display: none; }
+  .actions #say { flex: 1 1 auto; font-size: 16px; }
+  .hbtn.desk-only { display: none; }
+  .kbd { display: none; }
+  /* the aura table: a bottom sheet */
+  .app > aside { position: fixed; left: 0; right: 0; bottom: 0; z-index: 12; max-height: 78dvh; overflow: auto; order: 0;
+    transform: translateY(105%); transition: transform .25s ease; border-radius: 18px 18px 0 0; background: var(--panel);
+    box-shadow: 0 -20px 50px rgba(0,0,0,.6); padding-bottom: env(safe-area-inset-bottom); }
+  .app > aside .card { border: 0; background: none; }
+  .app > aside::before { content: ''; display: block; width: 40px; height: 4px; border-radius: 4px; background: var(--line); margin: 8px auto 0; }
+  body.sheet-auras .app > aside { transform: none; }
+  body.sheet-auras .app::after { content: ''; position: fixed; inset: 0; background: rgba(5,4,10,.55); z-index: 11; }
+  body.sheet-auras [data-cmd="auras"] { color: var(--gold); }
+  /* dialogs: bottom sheets */
+  .modal { padding: 0; place-items: end stretch; }
+  .sheet { width: 100%; max-height: 92dvh; border-radius: 20px 20px 0 0; border-width: 1px 0 0; padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+    animation: slideup .25s ease-out; }
+  .sheet h2 { font-size: 26px; }
+  .choices button { padding: 13px 14px; }
+  .tip { top: calc(52px + env(safe-area-inset-top)); }
+}
+@keyframes slideup { from { transform: translateY(40px); opacity: 0; } }
+
+.hbtn .tri { display: none; }
+@media (max-width: 760px) and (min-height: 521px) {
+  .hbtn .tri { display: grid; grid-template-columns: 1fr 1fr; width: 26px; gap: 1px; justify-items: center; }
+  .hbtn .tri svg { width: 12px; height: 12px; } .hbtn .tri svg:first-child { grid-column: 1 / -1; }
+  .scene { min-height: 92px; }
+  .log { scroll-behavior: auto; }
+}

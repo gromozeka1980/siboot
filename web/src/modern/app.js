@@ -24,6 +24,16 @@ const store = {
   clear(slot = 'auto') { try { localStorage.removeItem(KEY(slot)); } catch { /* ignore */ } },
 };
 const SLOTS = ['auto', 1, 2, 3];
+// toolbar icons (phones show the icon only, desktops the label)
+const svg = d => `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICON = {
+  auras: svg('<path d="M12 3l3 6H9z"/><circle cx="6" cy="17" r="3.2"/><path d="M15.5 14.5l5 5M20.5 14.5l-5 5"/>'),
+  chars: svg('<circle cx="9" cy="8" r="3.2"/><path d="M3 20c.6-3.6 3-5.5 6-5.5s5.4 1.9 6 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 14.6c2.6.2 4.1 2 4.5 4.9"/>'),
+  journal: svg('<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11M9 8h6"/>'),
+  library: svg('<path d="M4 5h4v15H4zM10 5h4v15h-4z"/><path d="M16 6l3.6-1 3 14.2-3.6 1z"/>'),
+  menu: svg('<path d="M4 7h16M4 12h16M4 17h16"/>'),
+};
+const tb = (cmd, label, cls = '') => `<button class="hbtn ${cls}" data-cmd="${cmd}" aria-label="${label}" title="${label}">${cmd === 'auras' ? `<b class="tri">${[1, 2, 3].map(k => auraSvg(k)).join('')}</b>` : ICON[cmd]}<span>${label}</span></button>`;
 // a deal is "I tell <listener> <whose> <which aura>, if <you tell me> <whose> <which aura>": what each slot asks for
 const SLOT_HINT = { 2: 'to whom you offer', 3: 'whose aura you tell', 4: 'which of their auras', 6: 'whose aura you want to learn', 7: 'which of their auras' };
 // immersion mode: icons without captions or translations, as in 1987 (a click on a conversation bubble reveals its meaning)
@@ -118,11 +128,7 @@ function switchLanguage() {
 // ---------------------------------------------------------------- the game screen
 const LAYOUT = () => `<div class="app">
   <header><h1>${T('title', 'Trust & Betrayal')}</h1><span class="clock" id="clock"></span>
-    <button class="hbtn phone-only" data-cmd="auras">${T('aurasBtn', 'Auras')}</button>
-    <button class="hbtn" data-cmd="chars">${T('characters', 'Characters')}</button>
-    <button class="hbtn" data-cmd="journal">${T('journal', 'Journal')}</button>
-    <button class="hbtn desk-only" data-cmd="library">${i18n.t('lib.menu')}</button>
-    <button class="hbtn" data-cmd="menu">${T('menu', 'Menu')}</button></header>
+    ${tb('auras', T('aurasBtn', 'Auras'), 'phone-only')}${tb('chars', T('characters', 'Characters'))}${tb('journal', T('journal', 'Journal'))}${tb('library', i18n.t('lib.menu'), 'desk-only')}${tb('menu', T('menu', 'Menu'))}</header>
   <main><div class="scene" id="scene"><div class="tag"></div><div class="who-wrap" style="display:flex;gap:22px;align-items:flex-end"></div></div>
     <section class="card log" id="log" aria-live="polite"></section></main>
   <aside><section class="card"><h3>${T('auraKnow', 'What I know of the auras')}</h3><table class="auras" id="auras"></table>
@@ -130,8 +136,8 @@ const LAYOUT = () => `<div class="app">
         `<span>${auraSvg(k)}</span><i>${T('beatsArrow', 'beats')} →</i>`).join('')}<span>${auraSvg(1)}</span></div>
       <div class="muted" style="font-size:12px;margin-top:8px">${T('auraHint2', 'Everyone learns new things about the others at midnight. Icons on the right are promises; click a row for everything about that character.')}</div></section></aside>
   <footer class="card"><div class="builder"><div><div class="slots" id="slots"></div><div class="preview" id="preview"></div><div class="palette" id="palette"></div></div>
-    <div class="actions"><button class="btn primary" id="say">${T('say', 'Say it')}</button><button class="btn" id="back">${T('back', 'Back')}</button>
-      <button class="btn" id="cancel">${i18n.t('btn.cancel')}</button><button class="btn hint" id="advise">💡 ${T('advise', 'What to do?')}</button><span class="kbd">${T('keys', 'Enter · Backspace · Esc')}</span></div></div></footer>
+    <div class="actions"><button class="btn primary" id="say">${T('say', 'Say it')}</button><button class="btn" id="back" aria-label="${T('back', 'Back')}"><i>↶</i><span>${T('back', 'Back')}</span></button>
+      <button class="btn" id="cancel" aria-label="${i18n.t('btn.cancel')}"><i>✕</i><span>${i18n.t('btn.cancel')}</span></button><button class="btn hint" id="advise" aria-label="${T('advise', 'What to do?')}"><i>💡</i><span>💡 ${T('advise', 'What to do?')}</span></button><span class="kbd">${T('keys', 'Enter · Backspace · Esc')}</span></div></div></footer>
 </div>`;
 
 async function play(assets, labels, library, opt) {
@@ -180,6 +186,11 @@ async function play(assets, labels, library, opt) {
     document.getElementById('cancel').disabled = s.sntcIndx <= 1;
   }
   view.onRender = () => { drawBuilder(); tips.check(s); };
+  // keep the newest line in view when the panel below grows or shrinks (phones: the action panel changes height)
+  const log = document.getElementById('log');
+  let stick = true;
+  log.addEventListener('scroll', () => { stick = log.scrollHeight - log.scrollTop - log.clientHeight < 40; });
+  new ResizeObserver(() => { if (stick) log.scrollTop = log.scrollHeight; }).observe(log);
 
   async function act(fn) {
     if (busy || over) return;
@@ -191,6 +202,8 @@ async function play(assets, labels, library, opt) {
   const say = () => act(async () => { if (s.sntcIndx !== ObjectB2) return; sound.play('say'); await game.execMove(); if (!game.quit) game.endSntc(); });
 
   root.onclick = e => {
+    if (document.body.classList.contains('sheet-auras') && !e.target.closest('[data-cmd="auras"]') && (!e.target.closest('.app > aside') || e.target.closest('[data-who]')))
+      document.body.classList.remove('sheet-auras'); // a tap outside (or on a character row) closes the sheet
     const bub = e.target.closest('.bubble'); if (bub && immersion()) bub.classList.toggle('reveal');
     const b = e.target.closest('button'); if (!b || b.disabled) return;
     if (b.dataset.w) pick(Number(b.dataset.w));
@@ -253,7 +266,7 @@ async function play(assets, labels, library, opt) {
 
   function command(cmd) {
     if (cmd === 'library') library.show();
-    if (cmd === 'auras') document.querySelector('.app > aside').scrollIntoView({ behavior: 'smooth' });
+    if (cmd === 'auras') document.body.classList.toggle('sheet-auras'); // phones: the aura table slides up over the game
     if (cmd === 'chars') charCard(0);
     if (cmd === 'journal') {
       const days = [...new Set(view.journal.map(e => e.day))].sort((x, y) => y - x);
@@ -321,6 +334,7 @@ async function play(assets, labels, library, opt) {
   view.render();
   const result = await ended;
   removeEventListener('keydown', onKey);
+  document.body.classList.remove('sheet-auras');
   tips.hide();
   return result;
 }
