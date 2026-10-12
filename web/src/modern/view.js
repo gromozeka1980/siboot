@@ -150,7 +150,9 @@ export class ModernView {
     if (this.dead) return;
     sound.play('story');
     const para = t => t.replace(/\0/g, '').replace(/\\\s*$/, '').split(/\r+/).map(p => p.trim()).filter(Boolean).map(p => `<p>${esc(p)}</p>`).join('');
-    const art = REMAKE.has(`stories/s${story.num}.webp`) ? `<img class="story-art" src="assets/remake/stories/s${story.num}.webp" alt="">` : '';
+    // stories that happen with whoever the player is with have one picture per character (s<N>_<who>.webp)
+    const file = [`stories/s${story.num}_${story.who}.webp`, `stories/s${story.num}.webp`].find(f => REMAKE.has(f));
+    const art = file ? `<img class="story-art" src="assets/remake/${file}" alt="">` : '';
     const face = story.faceWho > 0 && !art ? `<img src="${portrait(story.faceWho)}" alt="">` : ''; // the illustration already shows who is there
     const body = story.text.split(' ')[0]; // the story ends at its first ''; story 30 then has K/L parameter codes (DOS showed them)
     const m = this.modal(`${art}<div class="story${face ? '' : ' noface'}">${face}<div><div class="text">${para(body)}</div>

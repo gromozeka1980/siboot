@@ -116,7 +116,7 @@ export function parseStory(raw, storyNum, who, g) {
   let faceWho = who;
   if (CHRIS_FACE.includes(storyNum)) faceWho = 8;
   if (NO_FACE.includes(storyNum)) faceWho = 0;
-  return { num: storyNum, text, faceWho, options, parmOps, errors };
+  return { num: storyNum, who, text, faceWho, options, parmOps, errors };
 }
 
 /** Applies K/L parameter ops to StoryParm (only reachable with FIX #3). */
