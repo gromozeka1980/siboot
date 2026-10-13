@@ -18,12 +18,12 @@ for (const lang of ['ru', 'en']) {
   while (await p.$('.modal')) { const c = await p.$('.modal .choices button, .modal [data-ok]'); if (c) await c.click(); await sleep(800); }
   for (let k = 0; k < 6; k++) {
     if (await p.$('.modal')) { const c = await p.$('.modal .choices button, .modal [data-ok]'); if (c) await c.click(); await sleep(800); continue; }
-    await pick(25); await pick(27, 28, 29); await pick(113); await pick(115, 114);
+    await pick(25); await pick(27, 28, 29); if (k === 1) await pick(84); else { await pick(113); await pick(115, 114); }   // k=1: a promise, for the badge in the aura table
     if (await p.$eval('#say', e => !e.disabled)) { await p.click('#say'); await sleep(2500); }
   }
-  await shot('dialogue', 'main'); await shot('feelings', '.scene'); await shot('deal', '#log'); await shot('promises', 'aside');
+  await shot('dialogue', 'main'); await shot('feelings', '.scene'); await shot('deal', '#log'); await shot('promises', '#auras');
   await pick(44); await sleep(300); await shot('builder', 'footer');
-  await p.click('[data-cmd=chars]'); await sleep(600); await shot('characters', '.modal .sheet'); await p.click('.modal [data-x]');
+  await p.click('.auras tr[data-who="2"]'); await sleep(600); await shot('characters', '.modal .sheet'); await p.click('.modal [data-x]');
   await p.click('[data-cmd=journal]'); await sleep(600); await shot('journal', '.modal .sheet'); await p.click('.modal [data-x]');
   await p.evaluate(() => { const v = __play.view; v.midnight(); window.__d = v.defence(4, 1); }); await sleep(900); await shot('defence', '.modal .sheet');
   await p.click('.defend button:not([disabled])'); await sleep(200);
