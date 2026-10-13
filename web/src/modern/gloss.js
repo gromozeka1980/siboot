@@ -53,6 +53,10 @@ export function gloss(S, g) {
     if (typeof x === 'number' && x >= 1 && x <= 8 && 'SOXY'.includes(k)) return name(x, cse || 'nom');
     return x ?? m;
   });
+  // a beg/threat still being built is a bare verb; the engine fills it from the speaker's previous sentence when it is
+  // said (game.js execSntc), so the preview must do the same
+  if ((S[VerbA] === W.Beg || S[VerbA] === W.Threat) && !S[ObjectA2] && g?.s?.lastSntc?.[S[SubjectA]]?.[ObjectA2])
+    S = S.map((x, i) => (i >= 3 ? g.s.lastSntc[S[SubjectA]][i] : x));
   const sp = S[SubjectA], v = S[VerbA], o = S[ObjectA1], o2 = S[ObjectA2];
   const sb = S[SubjectB], vb = S[VerbB], ob = S[ObjectB1], ob2 = S[ObjectB2];
   const base = { S: sp, O: o };
