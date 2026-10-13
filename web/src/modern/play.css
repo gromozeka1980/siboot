@@ -366,3 +366,6 @@ body.no-advisor #advise { display: none; }
   .scene { min-height: 92px; }
   .log { scroll-behavior: auto; }
 }
+
+#waitlong[hidden] { display: none; }
+@media (max-width: 760px) and (min-height: 521px) { .actions #waitlong { flex: 0 0 48px; } }

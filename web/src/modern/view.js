@@ -66,7 +66,8 @@ export class ModernView {
     this.el = id => document.getElementById(id);
     this.mood = null; this.delta = [0, 0, 0];
     this.journal = []; // [{day, time, who, words, text, kind}], saved with the game
-    this.auraLog = {}; // {day: {who: [tanaga, katsin, shial]}} - aura counts the player has seen (-1 = unknown), saved with the game
+    this.auraLog = {};
+    this.storyCount = 0; // stories shown (the wait-till-evening loop stops on one) // {day: {who: [tanaga, katsin, shial]}} - aura counts the player has seen (-1 = unknown), saved with the game
   }
   get s() { return this.g.s; }
   name(who, cse = 'nom') { return i18n.name(who, cse, this.g); }
@@ -82,6 +83,11 @@ export class ModernView {
   }
   logSentence(who, S, extra = '') {
     const P = this.s.player, words = sentenceWords(S);
+    if (this.plea && who === this.plea.to) { // the listener's first reply after a beg/threat
+      if (S[VerbA] !== W.Agree) this.logNote(T(this.plea.beg ? 'begNo' : 'threatNo', this.plea.beg ? '{X} is not moved by your plea.' : '{X} does not give in to your threat.').replace('{X}', this.name(who)));
+      this.plea = null;
+    }
+    if (who === P) this.plea = S[VerbA] === W.Beg || S[VerbA] === W.Threat ? { to: this.s.interloc[P], beg: S[VerbA] === W.Beg } : null;
     if (!words.length || !S[VerbA] || S[VerbA] === W.Pause) return; // Pause = the engine's "thinking" placeholder
     const told = S;
     const bare = [W.Beg, W.Threat].includes(S[VerbA]) && !S[4]; // nothing to plead for: just the gesture
@@ -150,6 +156,7 @@ export class ModernView {
 
   async story(story, run) {
     if (this.dead) return;
+    this.storyCount++;
     sound.play('story');
     const para = t => t.replace(/\0/g, '').replace(/\\\s*$/, '').split(/\r+/).map(p => p.trim()).filter(Boolean).map(p => `<p>${esc(p)}</p>`).join('');
     // stories that happen with whoever the player is with have one picture per character (s<N>_<who>.webp)

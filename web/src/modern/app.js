@@ -4,7 +4,7 @@
 import { loadAssets } from '../platform/assets.js';
 import { Game } from '../engine/game.js';
 import { Rng } from '../engine/rng.js';
-import { ObjectB2, W } from '../engine/constants.js';
+import { ObjectB2, W, SUNSET } from '../engine/constants.js';
 import { i18n, I18n } from '../i18n/i18n.js';
 import { Library } from './library.js';
 import { ModernView, icon, portrait, setRemake, auraSvg } from './view.js';
@@ -136,7 +136,7 @@ const LAYOUT = () => `<div class="app">
         `<span>${auraSvg(k)}</span><i>${T('beatsArrow', 'beats')} →</i>`).join('')}<span>${auraSvg(1)}</span></div>
       <div class="muted" style="font-size:12px;margin-top:8px">${T('auraHint2', 'Everyone learns new things about the others at midnight. Icons on the right are promises; click a row for everything about that character.')}</div></section></aside>
   <footer class="card"><div class="builder"><div><div class="slots" id="slots"></div><div class="preview" id="preview"></div><div class="palette" id="palette"></div></div>
-    <div class="actions"><button class="btn primary" id="say">${T('say', 'Say it')}</button><button class="btn" id="back" aria-label="${T('back', 'Back')}"><i>↶</i><span>${T('back', 'Back')}</span></button>
+    <div class="actions"><button class="btn primary" id="say">${T('say', 'Say it')}</button><button class="btn" id="waitlong" hidden aria-label="${T('waitLong', 'Wait till evening')}" title="${T('waitLongHint', 'Wait again and again until something happens or evening comes')}"><i>⏩</i><span>${T('waitLong', 'Wait till evening')}</span></button><button class="btn" id="back" aria-label="${T('back', 'Back')}"><i>↶</i><span>${T('back', 'Back')}</span></button>
       <button class="btn" id="cancel" aria-label="${i18n.t('btn.cancel')}"><i>✕</i><span>${i18n.t('btn.cancel')}</span></button><button class="btn hint" id="advise" aria-label="${T('advise', 'What to do?')}"><i>💡</i><span>💡 ${T('advise', 'What to do?')}</span></button><span class="kbd">${T('keys', 'Enter · Backspace · Esc')}</span></div></div></footer>
 </div>`;
 
@@ -181,7 +181,12 @@ async function play(assets, labels, library, opt) {
       `<span class="muted">${filled.map(i => esc(labels[S[i]] || '')).join(' · ')}${filled.length ? ' …' : ''}</span>${hint}`;
     const ids = done ? [] : s.iconID.slice(1, s.iconCount + 1).map(Math.abs);
     document.getElementById('palette').innerHTML = ids.map(w => `<button class="chip" data-w="${w}" title="${esc(labels[w] || '')}">${icon(w)}<span>${esc(labels[w] || '')}</span></button>`).join('');
-    document.getElementById('say').disabled = !done;
+    const sayBtn = document.getElementById('say');
+    sayBtn.disabled = !done;
+    const v = S[2];
+    sayBtn.textContent = v === W.Go ? T('doGo', 'Go') : v === W.Wait ? T('doWait', 'Wait') : v >= 53 && v <= 55 ? T('doAttack', 'Attack') : T('say', 'Say it');
+    // wait till evening: alone, by day, when waiting is possible
+    document.getElementById('waitlong').hidden = !(s.sntcIndx === 1 && !s.interloc[P] && s.time < SUNSET && ids.includes(W.Wait));
     document.getElementById('back').disabled = s.sntcIndx <= 1;
     document.getElementById('cancel').disabled = s.sntcIndx <= 1;
   }
@@ -199,6 +204,20 @@ async function play(assets, labels, library, opt) {
     if (!over) { autoPick(); save(); view.render(); }
   }
   const pick = w => act(async () => { sound.play('pick'); game.chooseWord(w); });
+  /** Waits move after move until something happens (someone comes or speaks, a story, a change of place) or evening. */
+  const waitLong = () => act(async () => {
+    const where = s.charLocn[P], stories = view.storyCount, lines = view.journal.length;
+    const company = () => Array.from({ length: s.numChars }, (_, i) => i + 1).filter(i => i !== P && s.charLocn[i] === s.charLocn[P]).join();
+    const with0 = company();
+    sound.play('say');
+    while (!game.quit && s.time < SUNSET && !s.interloc[P] && s.charLocn[P] === where && view.storyCount === stories) {
+      if (s.sntcIndx !== 1 || !s.iconID.slice(1, s.iconCount + 1).map(Math.abs).includes(W.Wait)) break;
+      game.chooseWord(W.Wait); autoPick();
+      if (s.sntcIndx !== ObjectB2) { game.endSntc(); break; }
+      await game.execMove(); if (!game.quit) game.endSntc(); autoPick();
+      if (company() !== with0 || view.journal.slice(lines).some(e => e.who !== P && e.kind !== W.Wait)) break; // someone came, left or did something here
+    }
+  });
   const say = () => act(async () => { if (s.sntcIndx !== ObjectB2) return; sound.play('say'); await game.execMove(); if (!game.quit) game.endSntc(); });
 
   root.onclick = e => {
@@ -208,6 +227,7 @@ async function play(assets, labels, library, opt) {
     const b = e.target.closest('button'); if (!b || b.disabled) return;
     if (b.dataset.w) pick(Number(b.dataset.w));
     else if (b.id === 'say') say();
+    else if (b.id === 'waitlong') waitLong();
     else if (b.id === 'back') act(async () => game.backSpace());
     else if (b.id === 'cancel') act(async () => game.endSntc());
     else if (b.id === 'advise') { tips.hide(); tips.say(advise(game)); }
